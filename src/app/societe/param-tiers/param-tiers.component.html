@@ -1,0 +1,317 @@
+<div class="container">
+    <br>
+    <h1 class="text-center">PARAMETRE TIERS</h1>
+    <ul class="nav nav-tabs nav-justified md-tabs indigo" id="myTabJust" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="home-tab-just" data-toggle="tab" href="#home-just" role="tab"
+                aria-controls="home-just" aria-selected="true">Categorie Tarifaires</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="profile-tab-just" data-toggle="tab" href="#profile-just" role="tab"
+                aria-controls="profile-just" aria-selected="false">Famille Tiers</a>
+        </li>
+    </ul>
+    
+    <div class="tab-content card pt-5" id="myTabContentJust">
+        <div class="tab-pane fade show active" id="home-just" role="tabpanel" aria-labelledby="home-tab-just">
+          <div class="shop__cart__table" id="productTable">
+            <BUtton class="btn  btn-primary custom-btn py-0 px-3 pull-right"    (click)='creatCategorieTarif()'><i class="bi bi-plus"></i><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+              </svg>Ajouter</BUtton>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Categorie</th>
+                  <th scope="col">Prix TTC</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor=' let Categorie  of categorieTarif'>
+                  <td>{{Categorie.Categorie}}</td>
+                <td>
+                    <div class="form-check col-lg-6"  >
+                        <input type="checkbox"  name="PrixTTC"  [(ngModel)]="Categorie.PrixTTC">
+                    </div>
+                </td>
+                    <td class="text-right" class="">
+                        <a class="btn btn-simple  button " (click)='creatCategorieTarif()' (click)="scrollTo('section1')" ><i class="bi bi-plus-square"></i><svg
+                                xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-plus-square" viewBox="0 0 16 16">
+                                <path
+                                    d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                <path
+                                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                            </svg></a>
+                        <a class="btn btn-simple  button" (click)='editcategorieTarif(Categorie.ID)' (click)="scrollTo('section2')"><i class="fa fa-edit"><svg
+                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-pencil" viewBox="0 0 16 16">
+                                    <path
+                                        d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+                                </svg></i></a>
+                        <a class="btn  button"><i class="bi bi-x-circle"></i><svg xmlns="http://www.w3.org/2000/svg"
+                                width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                <path
+                                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                            </svg></a>
+                    </td>
+                </tr>
+    
+              </tbody>
+            </table>
+          </div>
+    
+        </div>
+    
+        <div class="tab-pane fade" id="profile-just" role="tabpanel" aria-labelledby="profile-tab-just">
+            
+          <div class="shop__cart__table" id="productTable2">
+            <BUtton class="btn  btn-primary custom-btn py-0 px-3 pull-right"    (click)='creatFamilleTiers()'><i class="bi bi-plus"></i><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+              </svg>Ajouter</BUtton>
+            <table class="table">
+               
+              <thead>
+                <tr>
+                  <th scope="col">Code</th>
+                  <th scope="col">Libelle</th>
+                  <th scope="col">CategorieTarif</th>
+                  <th scope="col">Exonere</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor=' let familleTiers  of familleTiers'>
+                    <td>{{familleTiers.Code}}</td>
+                    <td>{{familleTiers.Libelle}}</td>
+                    <td>
+                        <select name="CategorieTarif" [(ngModel)]="familleTiers.CategorieTarif">
+                            <option *ngFor="let CategorieTarif of CategorieTarif" [value]="CategorieTarif.value">  
+                            {{CategorieTarif.Categorie}}
+                            </option>
+                        </select>
+                    </td>
+                  <td>
+                      <div class="form-check col-lg-6"  >
+                          <input type="checkbox"  name="Exonere"  [(ngModel)]="familleTiers.Exonere">
+                      </div>
+                  </td>
+                      <td class="text-right" class="">
+                          <a class="btn btn-simple  button " (click)='creatFamilleTiers()' (click)="scrollTo('section3')" ><i class="bi bi-plus-square"></i><svg
+                                  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                  class="bi bi-plus-square" viewBox="0 0 16 16">
+                                  <path
+                                      d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                  <path
+                                      d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                              </svg></a>
+                          <a class="btn btn-simple  button" (click)='editfamilleTiers(familleTiers.ID)' (click)="scrollTo('section4')"><i class="fa fa-edit"><svg
+                                      xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                      class="bi bi-pencil" viewBox="0 0 16 16">
+                                      <path
+                                          d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+                                  </svg></i></a>
+                          <a class="btn  button"><i class="bi bi-x-circle"></i><svg xmlns="http://www.w3.org/2000/svg"
+                                  width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                  <path
+                                      d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                              </svg></a>
+                      </td>
+                  </tr>
+              </tbody>
+            </table>
+          </div>
+    
+        </div>
+      </div>
+</div>
+
+
+
+
+<div id="parentDiv" class="container" scrollSpy [spiedTags]="['DIV']" (sectionChange)="onSectionChange($event)">
+
+    <div *ngIf='creatcategorieTarif' id="section1" >
+        <ul class="nav nav-tabs nav-justified md-tabs indigo" id="myTabJust" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link" id="home-tab-just" data-toggle="tab" href="#home-just" role="tab"
+                    aria-controls="home-just" aria-selected="true">
+                    <h4>Creat Categorie Tarif</h4>
+                </a>
+            </li>
+        </ul>
+        <div class="tab-content card pt-5" id="myTabContentJust">
+            <div class="tab-pane fade show active" id="home-just" role="tabpanel" aria-labelledby="home-tab-just">
+                <div class="shop__cart__table" id="productTable">
+                   
+                    <form [formGroup]='categorieTarifForm'>
+
+                        <div class="row">
+                            <div class="col-lg-4"></div>
+                            <div class="form-group col-lg-2">
+                                <input type="text" class="form-control" formControlName='Categorie' placeholder="Categorie">
+                            </div>
+                            <div class="form-check col-lg-6"  >
+                                <input type="checkbox"  name="PrixTTC"  formControlName='PrixTTC'>
+                                
+                            </div>                           
+                        </div>
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-primary py-1 px-6"
+                                (click)='validateCreat(categorieTarifForm.value)'>Creat Categorie</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<br>
+<br>
+
+    <div *ngIf='ID' id="section2" >
+        <!-- <h1 class="text-center">UPDATE</h1> -->
+        <ul class="nav nav-tabs nav-justified md-tabs indigo" id="myTabJust" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link" id="home-tab-just" data-toggle="tab" href="#home-just" role="tab"
+                    aria-controls="home-just" aria-selected="true">
+                    <h4>Update Categorie Tarif</h4>
+                </a>
+            </li>
+        </ul>
+        <div class="tab-content card pt-5" id="myTabContentJust">
+            <div class="tab-pane fade show active" id="home-just" role="tabpanel" aria-labelledby="home-tab-just">
+                <div class="shop__cart__table" id="productTable">
+                    <form #categorieTarifForm="ngForm" (ngSubmit)="validateEdit()">
+                        <div class="row">
+                            <div class="col-lg-4"></div>
+                            <div class="form-group col-lg-2">
+                                <label>Categorie</label>
+                                <input type="text" class="form-control" [(ngModel)]='categoriesTarif.Categorie'
+                                    [ngModelOptions]="{standalone: true}" placeholder="Categorie">
+                            </div>
+                            <div class="form-check col-sm-1"  >
+                                <label>PrixTTC</label>
+                                <input type="checkbox"  name="PrixTTC" [(ngModel)]='categoriesTarif.PrixTTC'>
+                            </div>
+                        </div>
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-primary py-1 px-6">Valider</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+   
+
+
+
+    <div *ngIf='creatfamilleTier'  id="section3" >
+        <ul class="nav nav-tabs nav-justified md-tabs indigo" id="myTabJust" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link" id="home-tab-just" data-toggle="tab" href="#home-just" role="tab"
+                    aria-controls="home-just" aria-selected="true">
+                    <h4>Creat FamilleTiers</h4>
+                </a>
+            </li>
+        </ul>
+        <div class="tab-content card pt-5" id="myTabContentJust">
+            <div class="tab-pane fade show active" id="home-just" role="tabpanel" aria-labelledby="home-tab-just">
+                <div class="shop__cart__table" id="productTable">
+                   
+                    <form [formGroup]='familleTiersForm'>
+
+                        <div class="row">
+                            <div class="col-lg-2"></div>
+                            <div class="form-group col-lg-2">
+                                <label>Code</label>
+                                <input type="text" class="form-control" formControlName='Code' placeholder="Code">
+                            </div>
+                            
+                            <div class="form-group col-lg-2">
+                                <label>Libelle</label>
+                                <input type="text" class="form-control" formControlName='Libelle' placeholder="Libelle">
+                            </div>
+                            <div class="form-group col-lg-2">
+                                <label>CategorieTarif</label>
+                                <input type="text" class="form-control" formControlName='CategorieTarif' placeholder="CategorieTarif">
+                            </div>
+                            <div class="form-check col-sm-1" >
+                                <label>Exonere</label>
+                                <input type="checkbox"  name="Exonere"  formControlName='Exonere'>
+                            </div>
+                        </div>
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-primary py-1 px-6"
+                                (click)='validateCreatfamilleTier(familleTiersForm.value)'>Creat Categorie</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<br>
+<br>
+
+    <div *ngIf='ID' id="section4" >
+        <!-- <h1 class="text-center">UPDATE</h1> -->
+        <ul class="nav nav-tabs nav-justified md-tabs indigo" id="myTabJust" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link" id="home-tab-just" data-toggle="tab" href="#home-just" role="tab"
+                    aria-controls="home-just" aria-selected="true">
+                    <h4>Update FamilleTiers</h4>
+                </a>
+            </li>
+        </ul>
+        <div class="tab-content card pt-5" id="myTabContentJust">
+            <div class="tab-pane fade show active" id="home-just" role="tabpanel" aria-labelledby="home-tab-just">
+                <div class="shop__cart__table" id="productTable">
+                    <form #familleTiersForm="ngForm" (ngSubmit)="validateEditfamilleTier()">
+                        <div class="row">
+                            <div class="col-lg-4"></div>
+                            <div class="form-group col-lg-2">
+                                <label>Code</label>
+                                <input type="text" class="form-control" [(ngModel)]='famillesTiers.Code'
+                                    [ngModelOptions]="{standalone: true}" placeholder="Code">
+                            </div>
+                            <div class="form-group col-lg-2">
+                                <label>Libelle</label>
+                                <input type="text" class="form-control" [(ngModel)]='famillesTiers.Libelle'
+                                    [ngModelOptions]="{standalone: true}" placeholder="Libelle">
+                            </div>
+                            <div class="form-group col-lg-2">
+                                <label>CategorieTarif</label>
+                                <input type="text" class="form-control" [(ngModel)]='famillesTiers.CategorieTarif'
+                                    [ngModelOptions]="{standalone: true}" placeholder="CategorieTarif">
+                            </div>
+                            <div class="form-check col-sm-1"  >
+                                <label>PrixTTC</label>
+                                <input type="checkbox"  name="Exonere" [(ngModel)]='famillesTiers.Exonere'>
+                            </div>
+                        </div>
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-primary py-1 px-6">Valider</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+   
+</div>

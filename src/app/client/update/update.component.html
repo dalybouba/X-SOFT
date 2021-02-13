@@ -1,0 +1,295 @@
+<div class="container">
+    <br>
+    <h1 class="text-center">UPDATE CUSTOMER</h1>
+    <ul class="nav nav-tabs nav-justified md-tabs indigo" id="myTabJust" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="home-tab-just" data-toggle="tab" href="#home-just" role="tab"
+                aria-controls="home-just" aria-selected="true">Identification</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="profile-tab-just" data-toggle="tab" href="#profile-just" role="tab"
+                aria-controls="profile-just" aria-selected="false">Parametres</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="client-tab-just" data-toggle="tab" href="#client-just" role="tab"
+                aria-controls="client-just" aria-selected="false">Param3</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="param-tab-just" data-toggle="tab" href="#param-just" role="tab"
+                aria-controls="param-just" aria-selected="false">Pram4</a>
+        </li>
+    </ul>
+    <form #clientForm="ngForm" (ngSubmit)="validateEdit()">
+        <div class="tab-content card pt-5" id="myTabContentJust">
+            <div class="tab-pane fade show active" id="home-just" role="tabpanel" aria-labelledby="home-tab-just">
+                <div class="shop__cart__table" id="productTable">
+                    <h6>Information</h6>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" [(ngModel)]='client.ID'
+                                    [ngModelOptions]="{standalone: true}" placeholder="ID" readonly>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" [(ngModel)]='client.Intitule'
+                                    [ngModelOptions]="{standalone: true}" placeholder="Intitule">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" [(ngModel)]='client.NumeroPrincipale'
+                                    [ngModelOptions]="{standalone: true}" placeholder="NumeroPrincipale">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" [(ngModel)]='client.ContactPrincipale'
+                                    [ngModelOptions]="{standalone: true}" placeholder="ContactPrincipale">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" [(ngModel)]='client.Qualite'
+                                    [ngModelOptions]="{standalone: true}" placeholder="Activiter">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" [(ngModel)]='client.MatriculeFiscale'
+                                    [ngModelOptions]="{standalone: true}" placeholder="MatriculeFiscale">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" [(ngModel)]='client.Incoterm'
+                                    [ngModelOptions]="{standalone: true}" placeholder="Incoterm">
+                            </div>
+                            <div >                              
+                                <select class="form-control" aria-label="Default select example" name="Familletier"  [(ngModel)]='client.Familletier'
+                                [ngModelOptions]="{standalone: true}">
+                                    <option selected>{{client.Familletier}}</option>
+                                    <option *ngFor="let Familletier of familleTier">  
+                                    {{Familletier.Code}}
+                                    </option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="text" class="form-control" [(ngModel)]='client.CompteAuxiliaire'
+                                    [ngModelOptions]="{standalone: true}" placeholder="CompteAuxiliaire">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" [(ngModel)]='client.ICE'
+                                    [ngModelOptions]="{standalone: true}" placeholder="ICE">
+                            </div>
+                        </div>
+                    </div>
+                    <h6>Coordonnées</h6>
+                    <div class="row">
+                       
+                        <div class="col-lg-8">
+                            <div class="form-group">
+                                <input type="text" class="form-control" [(ngModel)]='client.Adresse'
+                                    [ngModelOptions]="{standalone: true}" placeholder="Adresse">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <input type="text" class="form-control" [(ngModel)]='client.CodePostal'
+                                    [ngModelOptions]="{standalone: true}" placeholder="CodePostal">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <input type="text" class="form-control" [(ngModel)]='client.Ville'
+                                [ngModelOptions]="{standalone: true}" placeholder="Ville">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <input type="text" class="form-control" [(ngModel)]='client.Pays'
+                                [ngModelOptions]="{standalone: true}" placeholder="Pays">
+                        </div>
+                    </div>
+                    <div class="row">
+                        
+                        <div class="col-lg-3">
+
+                            <div class="form-group">
+                                <input type="text" class="form-control" [(ngModel)]='client.Telephone'
+                                    [ngModelOptions]="{standalone: true}" placeholder="Telephone">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <input type="text" class="form-control" [(ngModel)]='client.EMail'
+                                [ngModelOptions]="{standalone: true}" placeholder="EMail">
+                        </div>
+                    </div>
+                    <div class="row">
+                       
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <input type="text" class="form-control" [(ngModel)]='client.Telecopie'
+                                    [ngModelOptions]="{standalone: true}" placeholder="Telecopie">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <input type="text" class="form-control" [(ngModel)]='client.SiteWeb'
+                                [ngModelOptions]="{standalone: true}" placeholder="SiteWeb">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="profile-just" role="tabpanel" aria-labelledby="profile-tab-just">
+                <div class="shop__cart__table" id="productTable2">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <h6>Option de Traitement</h6>
+                        </div>
+                        <div class="col-lg-4"></div>
+                        <div class="col-lg-4">
+                            <h6>Info TVA</h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <label>Devise</label>
+                            <div >                              
+                                <select class="form-control" aria-label="Default select example" name="Devise"  [(ngModel)]='client.Devise'
+                                [ngModelOptions]="{standalone: true}">
+                                    <option selected>{{client.Devise}}</option>
+                                    <option *ngFor="let Devise of Devise">  
+                                    {{Devise.DEVISE}}
+                                    </option>
+                                </select>
+                            </div>
+                            <label>ModalitePaiement</label>
+                            <div >                              
+                                <select class="form-control" aria-label="Default select example" name="Devise"  [(ngModel)]='client.ModalitePaiement'
+                                [ngModelOptions]="{standalone: true}">
+                                    <option selected>{{client.ModalitePaiement}}</option>
+                                    <option *ngFor="let ModalitePaiement of ModalitePaiement">  
+                                    {{ModalitePaiement.Code}}
+                                    </option>
+                                </select>
+                            </div>
+                            <label>CategorieTarif</label>
+                            <div >                              
+                                <select class="form-control" aria-label="Default select example" name="Devise"  [(ngModel)]='client.CategorieTarif'
+                                [ngModelOptions]="{standalone: true}">
+                                    <option selected>{{client.CategorieTarif}}</option>
+                                    <option *ngFor="let CategorieTarif of CategorieTarif">  
+                                    {{CategorieTarif.Categorie}}
+                                    </option>
+                                </select>
+                            </div>
+                            <label>TauxRemise</label>
+                            <div >                              
+                                <select class="form-control" aria-label="Default select example" name="Devise"  [(ngModel)]='client.TauxRemise'
+                                [ngModelOptions]="{standalone: true}">
+                                    <option selected>{{client.TauxRemise}}</option>
+                                    <option selected>0</option>
+                                    <option selected>5</option>
+                                    <option selected>10</option>
+                                    <option selected>15</option>                                  
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <input type="text" class="form-control" [(ngModel)]='client.Depot'
+                                    [ngModelOptions]="{standalone: true}" placeholder="Depot">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" [(ngModel)]='client.Classement'
+                                    [ngModelOptions]="{standalone: true}" placeholder="N°Etab Secondaire">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" [(ngModel)]='client.Collaborateur'
+                                    [ngModelOptions]="{standalone: true}" placeholder="Representant">
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+
+                            <div class="form-group">
+                                <input type="text" class="form-control" [(ngModel)]='client.CategorieTVA'
+                                    [ngModelOptions]="{standalone: true}" placeholder="CategorieTVA">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" [(ngModel)]='client.Categorie'
+                                    [ngModelOptions]="{standalone: true}" placeholder="Categorie">
+                            </div>
+                            <div class="row" style="padding-left: 1rem;">
+                                <div class="form-check col-lg-6">          
+                                    <input  type="checkbox"  name="Timbre" [ngModelOptions]="{standalone: true}"  [(ngModel)]='client.Timbre'>
+                                    <label>Timbre</label>                                                                                                           
+                                </div>
+                                <div class="form-check col-lg-6">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Exonéré TVA
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row" style="padding-left: 1rem;">
+                                <div class="form-check col-lg-6">
+                                    
+                                    <input type="checkbox"  name="Sommeil"  [ngModelOptions]="{standalone: true}"  [(ngModel)]='client.Sommeil'> 
+                                    <label>Sommeil</label>                                                                  
+                                </div>
+                                <div class="form-check col-lg-6">
+                                    
+                                    <input  type="checkbox"   name="Etranger"  [ngModelOptions]="{standalone: true}"  [(ngModel)]='client.Etranger'>  
+                                    <label>Etranger</label>                                
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div>
+                        <h6>Info de Livraison</h6>
+                        <div class="row">
+                            
+                            <div class="col-lg-8">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" [(ngModel)]='client.ADRESSELivraison'
+                                        [ngModelOptions]="{standalone: true}" placeholder="ADRESSELivraison">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            
+                            <div class="col-lg-2">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" [(ngModel)]='client.CodePostal'
+                                        [ngModelOptions]="{standalone: true}" placeholder="CodePostal">
+                                </div>
+                            </div>
+
+                            <div class="form-group col-lg-3">
+                                <input type="text" class="form-control" [(ngModel)]='client.VilleLivraison'
+                                    [ngModelOptions]="{standalone: true}" placeholder="Ville">
+                            </div>
+                            <div class="form-group col-lg-3">
+                                <input type="text" class="form-control" [(ngModel)]='client.PaysLivraison'
+                                    [ngModelOptions]="{standalone: true}" placeholder="Pays">
+                            </div>
+
+                        </div>
+                        <h6>Information Complémentaire</h6>
+                    <div class="row">
+                        
+                       <div class="col-lg-8">
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label"></label>
+                            <textarea class="form-control" [(ngModel)]='client.Commentaire'
+                            [ngModelOptions]="{standalone: true}" placeholder="Commentaire" id="exampleFormControlTextarea1" rows="3"></textarea>
+                          </div>
+                          <div class="mb-3">
+                            <label for="formFile" class="form-label">Default file input example</label>
+                            <input class="form-control" type="file" id="formFile">
+                          </div>
+                       </div>
+                    </div>
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary py-3 px-5">Edit Customer</button>
+            </div>
+        </div>
+    </form>
+</div>

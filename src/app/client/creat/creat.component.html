@@ -1,0 +1,396 @@
+<div class="container">
+    <br>
+    <h1 class="text-center">CREAT CUSTOMER</h1>
+    <ul class="nav nav-tabs nav-justified md-tabs indigo" id="myTabJust" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="home-tab-just" data-toggle="tab" href="#home-just" role="tab"
+                aria-controls="home-just" aria-selected="false">Identification</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="profile-tab-just" data-toggle="tab" href="#profile-just" role="tab"
+                aria-controls="profile-just" aria-selected="false">Parametres</a>
+        </li>
+    </ul>
+    <form [formGroup]='clientForm'>
+        <div class="tab-content card pt-5" id="myTabContentJust">
+            <div class="tab-pane fade show active" id="home-just" role="tabpanel" aria-labelledby="home-tab-just">
+                <div class="shop__cart__table" id="productTable">
+                    <h6>Information</h6>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Intitule</label> 
+                                <input type="text" class="form-control" formControlName='Intitule'
+                                    placeholder="Intitule">
+                            </div>
+                            <!-- <div *ngIf="clientForm.controls['Intitule'].invalid && 
+                            (clientForm.controls['Intitule'].dirty || clientForm.controls['Intitule'].touched)">
+                                <div *ngIf="clientForm.controls['Intitule'].errors.maxlength" class="text-danger">
+                                    Intitule must have less than 35 characters !!
+                                </div>
+                                <div *ngIf="clientForm.controls['Intitule'].errors.required" class="text-danger">
+                                    Intitule name is required !!
+                                </div>
+                            </div> -->
+                            <div class="form-group">
+                                <label>NumeroPrincipale</label>
+                                <input type="text" class="form-control" formControlName='NumeroPrincipale'
+                                    placeholder="NumeroPrincipale">
+                            </div>
+                            <!-- <div
+                                *ngIf="clientForm.controls['NumeroPrincipale'].invalid && 
+                            (clientForm.controls['NumeroPrincipale'].dirty || clientForm.controls['NumeroPrincipale'].touched)">
+                                <div *ngIf="clientForm.controls['NumeroPrincipale'].errors.maxlength"
+                                    class="text-danger">
+                                    NumeroPrincipale must have less than 13 characters !!
+                                </div>
+                                <div *ngIf="clientForm.controls['NumeroPrincipale'].errors.required"
+                                    class="text-danger">
+                                    NumeroPrincipale name is required !!
+                                </div>
+                            </div> -->
+                            <div class="form-group">
+                                <label>ContactPrincipale</label>
+                                <input type="text" class="form-control" formControlName='ContactPrincipale'
+                                    placeholder="ContactPrincipale">
+                            </div>
+                            <!-- <div
+                                *ngIf="clientForm.controls['ContactPrincipale'].invalid && 
+                            (clientForm.controls['ContactPrincipale'].dirty || clientForm.controls['ContactPrincipale'].touched)">
+                                <div *ngIf="clientForm.controls['ContactPrincipale'].errors.maxlength"
+                                    class="text-danger">
+                                    ContactPrincipale must have less than 35 characters !!
+                                </div>
+                                <div *ngIf="clientForm.controls['ContactPrincipale'].errors.required"
+                                    class="text-danger">
+                                    ContactPrincipale name is required !!
+                                </div>
+
+                            </div> -->
+                            <div class="form-group">
+                                <label>Qualite</label>
+                                <input type="text" class="form-control" formControlName='Qualite'
+                                    placeholder="Activiter">
+                            </div>
+                            <div class="form-group">
+                                <label>MatriculeFiscale</label>
+                                <input type="text" class="form-control" formControlName='MatriculeFiscale'
+                                    placeholder="MatriculeFiscale">
+                            </div>
+                            <!-- <div
+                                *ngIf="clientForm.controls['MatriculeFiscale'].invalid && 
+                            (clientForm.controls['MatriculeFiscale'].dirty || clientForm.controls['MatriculeFiscale'].touched)">
+                                <div *ngIf="clientForm.controls['MatriculeFiscale'].errors.minlength"
+                                    class="text-danger">
+                                    MatriculeFiscale must have at least 3 characters !!
+                                </div>
+                                <div *ngIf="clientForm.controls['MatriculeFiscale'].errors.required"
+                                    class="text-danger">
+                                    MatriculeFiscale name is required !!
+                                </div>
+                                <div *ngIf="clientForm.controls['MatriculeFiscale'].errors.pattern" class="text-danger">
+                                    only number is required !!
+                                </div>
+                            </div> -->
+                        </div>
+                         <div class="col-lg-3">
+                            <div class="form-group">
+                                <label>Incoterm</label>
+                                <input type="text" class="form-control" formControlName='Incoterm'
+                                    placeholder="Incoterm">
+                            </div>
+                            <div >
+                                <label>Familletier</label>
+                                <select class="form-control" aria-label="Default select example"  name="ModalitePaiement" formControlName='Familletier'>
+                                    <option selected>---Select--</option>
+                                    <option *ngFor="let Familletier of familleTier">  
+                                    {{Familletier.Code}}
+                                    </option>
+                                </select>
+                            </div>
+                           
+                            <div class="form-group">
+                                <label>CompteAuxiliaire</label>
+                                <input type="text" class="form-control" formControlName='CompteAuxiliaire'
+                                    placeholder="CompteAuxiliaire">
+                            </div>
+                            <div class="form-group">
+                                <label>ICE</label>
+                                <input type="text" class="form-control" formControlName='ICE' placeholder="ICE">
+                            </div>
+                        </div> 
+                    </div>
+                    <h6>Coordonnées</h6>
+                   <div >
+                        <div class="row">
+                           
+                            <div class="col-lg-8">
+                                <div class="form-group">
+                                    <label>Adresse</label>
+                                    <input type="text" class="form-control" formControlName='Adresse'
+                                        placeholder="Adresse">
+                                </div>
+                            </div>
+                        </div>
+                         <div class="row">
+                            
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label>CodePostal</label>
+                                    <input type="text" class="form-control" formControlName='CodePostal'
+                                        placeholder="CodePostal">
+                                </div>
+                                <!-- <div *ngIf="clientForm.controls['CodePostal'].invalid && 
+                            (clientForm.controls['CodePostal'].dirty || clientForm.controls['CodePostal'].touched)">
+                                    <div *ngIf="clientForm.controls['CodePostal'].errors.maxlength" class="text-danger">
+                                        CodePostal must have less than 9 characters !!
+                                    </div>
+                                    <div *ngIf="clientForm.controls['CodePostal'].errors.required" class="text-danger">
+                                        CodePostal name is required !!
+                                    </div>
+                                </div> -->
+                             </div>
+                          <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label>Ville</label>
+                                    <input type="text" class="form-control" formControlName='Ville' placeholder="Ville">
+                                </div> 
+                                <!-- <div *ngIf="clientForm.controls['Ville'].invalid && 
+                            (clientForm.controls['Ville'].dirty || clientForm.controls['Ville'].touched)">
+                                    <div *ngIf="clientForm.controls['Ville'].errors.minlength" class="text-danger">
+                                        ville must have at least 3 characters !!
+                                    </div>
+                                    <div *ngIf="clientForm.controls['Ville'].errors.required" class="text-danger">
+                                        ville name is required !!
+                                    </div>
+                                    <div *ngIf="clientForm.controls['Ville'].errors.pattern" class="text-danger">
+                                        only characters is required !!
+                                    </div>
+                                </div> -->
+                             </div>
+                            <div class="col-lg-2">
+                                <div class="form-group">
+                                    <label>Pays</label>
+                                    <input type="text" class="form-control" formControlName='Pays' placeholder="Pays">
+                                </div> 
+                                <!-- <div *ngIf="clientForm.controls['Pays'].invalid && 
+                            (clientForm.controls['Pays'].dirty || clientForm.controls['Pays'].touched)">
+                                    <div *ngIf="clientForm.controls['Pays'].errors.maxlength" class="text-danger">
+                                        Pays must have less than 35 characters !!
+                                    </div>
+                                    <div *ngIf="clientForm.controls['Pays'].errors.required" class="text-danger">
+                                        Pays name is required !!
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div> 
+                        <div class="row">
+                            
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label>Telephone</label>
+                                    <input type="text" class="form-control" formControlName='Telephone'
+                                        placeholder="Telephone">
+                                </div>
+                            </div>
+                           <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label>EMail</label>
+                                    <input type="text" class="form-control" formControlName='EMail' placeholder="EMail">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                           
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label>Telecopie</label>
+                                    <input type="text" class="form-control" formControlName='Telecopie'
+                                        placeholder="Telecopie">
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label>SiteWeb</label>
+                                    <input type="text" class="form-control" formControlName='SiteWeb'
+                                        placeholder="SiteWeb">
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+             <div class="tab-pane fade" id="profile-just" role="tabpanel" aria-labelledby="profile-tab-just">
+                <div class="shop__cart__table" id="productTable2">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <h6>Option de Traitement</h6>
+                        </div>
+                        <div class="col-lg-4"></div>
+                        <div class="col-lg-4">
+                            <h6>Info TVA</h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <!-- <div class="form-group">
+                                <input type="text" class="form-control" formControlName='Devise' placeholder="Devise">
+                            </div> -->
+                            <label>Devise</label>
+                            <div >
+                                
+                                <select class="form-control" aria-label="Default select example" name="Devise" formControlName='Devise'>
+                                    <option selected>---Select--</option>
+                                    <option *ngFor="let Devise of Devise">  
+                                    {{Devise.DEVISE}}
+                                    </option>
+                                </select>
+                            </div>
+                         
+                           <!-- <div class="form-group">
+                                <input type="text" class="form-control" formControlName='ModalitePaiement'
+                                    placeholder="ModalitePaiement">
+                            </div> -->
+                      
+                           <label>ModalitePaiement</label>
+                            <div >
+                             
+                                <select class="form-control" aria-label="Default select example"  name="ModalitePaiement" formControlName='ModalitePaiement'>
+                                    <option selected>---Select--</option>
+                                    <option *ngFor="let ModalitePaiement of ModalitePaiement">  
+                                    {{ModalitePaiement.Code}}
+                                    </option>
+                                </select>
+                            </div>
+                             <!-- <div class="form-group">
+                                <input type="text" class="form-control" formControlName='CategorieTarif'
+                                    placeholder="CategorieTarif">
+                            </div> -->
+                            <label>CategorieTarif</label>
+                            <div class="form-group" >
+                                
+                                <select class="form-control" aria-label="Default select example" name="CategorieTarif" formControlName='CategorieTarif'>
+                                    <option selected>---Select--</option>
+                                    <option *ngFor="let CategorieTarif of CategorieTarif">  
+                                    {{CategorieTarif.Categorie}}
+                                    </option>
+                                </select>
+                            </div>
+                            <label>Taux De Remise %</label>
+                            <div class="form-group" >
+                                
+                                <select class="form-control" aria-label="Default select example" name="CategorieTarif" formControlName='TauxRemise'>
+                                    <option selected>0</option>
+                                    <option selected>5</option>
+                                    <option selected>10</option>
+                                    <option selected>15</option>
+                                    
+                                </select>
+                            </div>
+                            
+                     </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <input type="text" class="form-control" formControlName='Depot' placeholder="Depot">
+                            </div>
+                               <div class="form-group">
+                                <input type="text" class="form-control" formControlName='Classement'
+                                    placeholder="N°Etab Secondaire">
+                            </div>
+                          <div class="form-group">
+                                <input type="text" class="form-control" formControlName='Collaborateur'
+                                    placeholder="Representant">
+                            </div>
+                          </div>
+                        <div class="col-lg-4">
+
+                            <div class="form-group">
+                                <input type="text" class="form-control" formControlName='CategorieTVA'
+                                    placeholder="CategorieTVA">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" formControlName='Categorie'
+                                    placeholder="Categorie">
+                            </div>
+                           <div class="row" style="padding-left: 1rem;">
+                                <div class="form-check col-lg-6">
+                                    
+                                    <input  type="checkbox"  name="Timbre"  formControlName='Timbre'>
+                                    <label>Timbre</label>                                                                                                           
+                                </div>
+                                <div class="form-check col-lg-6">
+                                    <input type="checkbox"  name="ExonéréTVA"   formControlName='ExonéréTVA'>
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Exonéré TVA
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row" style="padding-left: 1rem;">
+                                <div class="form-check col-lg-6">
+                                    
+                                    <input type="checkbox"  name="Sommeil"  formControlName='Sommeil'> 
+                                    <label>Sommeil</label>                                                                  
+                                </div>
+                                <div class="form-check col-lg-6">
+                                    
+                                    <input  type="checkbox"   name="Etranger"  formControlName='Etranger'>  
+                                    <label>Etranger</label>                                
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                    <h6>Info de Livraison</h6>
+                    <div class="row">
+                        
+                        <div class="col-lg-8">
+                            <div class="form-group">
+                                <input type="text" class="form-control" formControlName='ADRESSELivraison'
+                                    placeholder="ADRESSELivraison">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <input type="text" class="form-control" formControlName='CodePostalLivraison'
+                                    placeholder="CodePostalLivraison">
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <input type="text" class="form-control" formControlName='VilleLivraison'
+                                    placeholder="VilleLivraison">
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <input type="text" class="form-control" formControlName='PaysLivraison'
+                                    placeholder="PaysLivraison">
+                            </div>
+
+                        </div>
+                    </div>
+                    <h6>Information Complémentaire</h6>
+                    <div class="row">
+                     
+                       <div class="col-lg-8">
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label"></label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Commentaire" formControlName='Commentaire'></textarea>
+                          </div>
+                          <!-- <div class="mb-3">
+                            <label for="formFile" class="form-label">Default file input example</label>
+                            <input class="form-control" type="file" id="formFile">
+                          </div> -->
+                       </div>
+                    </div>
+                </div>
+            </div> 
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary py-3 px-5" 
+                    (click)='creatCustomer(clientForm.value)'>Creat Customer</button>
+            </div>
+        </div>
+    </form>
+</div>

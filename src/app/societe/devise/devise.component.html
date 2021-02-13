@@ -1,0 +1,182 @@
+<form class="container">
+    <br><br>
+    <h1 class="text-center">Devise LIST</h1>
+    <BUtton class="btn  btn-primary custom-btn py-0 px-3 pull-right"    (click)='creat()'><i class="bi bi-plus"></i><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+      </svg>Ajouter</BUtton>
+</form>
+<table class="container table table-striped" id="mytableofrows">
+    <thead>
+        <tr>
+            <th scope="col">Code ISO</th>
+            <th scope="col">Devise</th>
+            <th scope="col">Libellé</th>
+            <th scope="col">Cours</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let devise of devise">
+            <th scope="row"> {{devise.CODEISO | uppercase}}</th>
+            <td>{{devise.DEVISE | uppercase}}</td>
+            <td>{{devise.LIBELLE | uppercase}}</td>
+            <td>{{devise.COURS}}</td>
+            <td class="text-right" class="">
+                <a class="btn btn-simple  button " (click)='creat()' (click)="scrollTo('section2')" ><i class="bi bi-plus-square"></i><svg
+                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-plus-square" viewBox="0 0 16 16">
+                        <path
+                            d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                        <path
+                            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                    </svg></a>
+                <a class="btn btn-simple  button" (click)='edit(devise.ID)' (click)="scrollTo('section1')"><i class="fa fa-edit"><svg
+                            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-pencil" viewBox="0 0 16 16">
+                            <path
+                                d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+                        </svg></i></a>
+                <a class="btn  button"><i class="bi bi-x-circle"></i><svg xmlns="http://www.w3.org/2000/svg"
+                        width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                        <path
+                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                    </svg></a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<br>
+<br>
+
+<div id="parentDiv" scrollSpy [spiedTags]="['DIV']" (sectionChange)="onSectionChange($event)" >
+<div *ngIf='ID' id="section1" class="container">
+    <!-- <h1 class="text-center">UPDATE</h1> -->
+    <ul class="nav nav-tabs nav-justified md-tabs indigo" id="myTabJust" role="tablist">
+        <li  class="nav-item">
+            <a class="nav-link" id="home-tab-just" data-toggle="tab" href="#home-just" role="tab"
+                aria-controls="home-just" aria-selected="true">
+                <h4>Update Devise</h4>
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content card pt-5" id="myTabContentJust">
+        <div class="tab-pane fade show active" id="home-just" role="tabpanel" aria-labelledby="home-tab-just">
+            <div class="shop__cart__table" id="productTable">
+                <div class="row">
+                    <div class="col-lg-5"></div>
+                    <!-- <h4 style="color: #007BFF;">Update Devise</h4> -->
+                </div>
+                <form #deviseForm="ngForm" (ngSubmit)="validateEdit()">
+                    <div class="row">
+                        <div class="col-lg-4"></div>
+                        <div class="form-group col-lg-4">
+                            <input type="text" class="form-control" [(ngModel)]='devises.LIBELLE'
+                                [ngModelOptions]="{standalone: true}" placeholder="LIBELLE">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4"></div>
+                        <div class="form-group col-lg-2">
+                            <input type="text" class="form-control" [(ngModel)]='devises.DEVISE'
+                                [ngModelOptions]="{standalone: true}" placeholder="Devise">
+                        </div>
+                        <div class="form-group col-lg-2">
+                            <input type="text" class="form-control" [(ngModel)]='devises.CODEISO'
+                                [ngModelOptions]="{standalone: true}" placeholder="CODEISO">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4"></div>
+                        <div class="form-group col-lg-2">
+                            <input type="text" class="form-control" [(ngModel)]='devises.DECIMALE'
+                                [ngModelOptions]="{standalone: true}" placeholder="DECIMALE">
+                        </div>
+                        <div class="form-group col-lg-2">
+                            <input type="text" class="form-control" [(ngModel)]='devises.CODEBANQUE'
+                                [ngModelOptions]="{standalone: true}" placeholder="CODEBANQUE">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4"></div>
+                        <div class="form-group col-lg-2">
+                            <input type="text" class="form-control" [(ngModel)]='devises.COURS'
+                                [ngModelOptions]="{standalone: true}" placeholder="COURS">
+                        </div>
+                        <div class="form-group col-lg-2">
+                            <input type="text" class="form-control" [(ngModel)]='devises.SYMBOLE'
+                                [ngModelOptions]="{standalone: true}" placeholder="SYMBOLE">
+                        </div>
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary py-1 px-6">Edit Customer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+
+
+
+<br>
+<br>
+<br>
+<div id="parentDiv" scrollSpy [spiedTags]="['DIV']" (sectionChange)="onSectionChange($event)" >
+<div *ngIf='creatDevise' id="section2" class="container"> 
+    <ul class="nav nav-tabs nav-justified md-tabs indigo" id="myTabJust" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link" id="home-tab-just" data-toggle="tab" href="#home-just" role="tab"
+                aria-controls="home-just" aria-selected="true">
+                <h4>Creat Devise</h4>
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content card pt-5" id="myTabContentJust">
+        <div class="tab-pane fade show active" id="home-just" role="tabpanel" aria-labelledby="home-tab-just">
+            <div class="shop__cart__table" id="productTable">
+                <form [formGroup]='deviseForm'>
+                    <div class="row">
+                        <div class="col-lg-4"></div>
+                        <div class="form-group col-lg-4">
+                            <input type="text" class="form-control" formControlName='LIBELLE' placeholder="LIBELLE">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4"></div>
+                        <div class="form-group col-lg-2">
+                            <input type="text" class="form-control" formControlName='DEVISE' placeholder="Devise">
+                        </div>
+                        <div class="form-group col-lg-2">
+                            <input type="text" class="form-control" formControlName='CODEISO' placeholder="CODEISO">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4"></div>
+                        <div class="form-group col-lg-2">
+                            <input type="text" class="form-control"formControlName='DECIMALE' placeholder="DECIMALE">
+                        </div>
+                        <div class="form-group col-lg-2">
+                            <input type="text" class="form-control" formControlName='CODEBANQUE' placeholder="CODEBANQUE">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4"></div>
+                        <div class="form-group col-lg-2">
+                            <input type="text" class="form-control" formControlName='COURS' placeholder="COURS">
+                        </div>
+                        <div class="form-group col-lg-2">
+                            <input type="text" class="form-control" formControlName='SYMBOLE' placeholder="SYMBOLE">
+                        </div>
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary py-1 px-6"  (click)='validateCreat(deviseForm.value)'>Creat Devise</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> 
+</div>

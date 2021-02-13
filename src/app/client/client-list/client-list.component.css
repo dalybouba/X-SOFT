@@ -1,0 +1,18 @@
+/* table#mytableofrows tr td a.button { display:none;}
+  table#mytableofrows tr:hover td a.button { display:inline-block;} */
+  .btn-primary.custom-btn {
+    background-color: #2f4f4f;
+    border-color: #000;
+  }
+  @media (min-width: 768px) {
+    .navbar-brand.abs
+        {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            text-align: center;
+        }
+    }
+    .pull-right {
+      float: right;
+    }

@@ -1,0 +1,169 @@
+<!-- <div class="d-flex" id="wrapper"> -->
+<!-- Sidebar -->
+<div class="bg-light border-right" id="sidebar-wrapper">
+  <div class="sidebar-heading"> X-SOFT </div>
+  <div class="list-group list-group-flush">
+    <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+    <!-- <button href="#" class="list-group-item list-group-item-action bg-light" (click)="collapse.toggle()"
+      [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">CUSTOMER</button>
+    <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+      <ul class="card">
+        <div class="card-body">
+          <h6><a routerLink='/client-list' style="color: rgb(63, 60, 60);">List</a></h6>
+          <h6><a routerLink='creat' style="color:  rgb(63, 60, 60);">Creat</a></h6>
+        </div>
+      </ul>
+    </div> -->
+    <a routerLink='/customers/list' class="list-group-item list-group-item-action bg-light">Customer</a>
+    <a routerLink='/settings/company' class="list-group-item list-group-item-action bg-light">Setting</a>
+    <a href="#" class="list-group-item list-group-item-action bg-light">Repository</a>
+    
+    <a href="#" class="list-group-item list-group-item-action bg-light">Supplier</a>
+    <button href="#" class="list-group-item list-group-item-action bg-light" (click)="collapse.toggle()"
+      [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">Creat</button>
+    <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+      <ul class="card">
+        <div class="card-body">
+          <h6><a routerLink='creat' style="color: rgb(63, 60, 60);">CUSTOMER</a></h6>
+          <h6><a href="#" style="color:  rgb(63, 60, 60);">Another action</a></h6>
+          <h6><a href="#" style="color:  rgb(63, 60, 60);">Something else here</a></h6>
+        </div>
+      </ul>
+    </div>
+    <!-- <ul>
+      <li    class="nav-item dropdown">
+        <div class="active">
+          <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" >
+            CREAT
+          </a>
+          <div class="collapse list-unstyled" id="homeSubmenu">
+            <a class="dropdown-item" routerLink='creat'>CUSTOMER</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </div>
+      </li>
+     </ul> -->
+  </div>
+</div>
+
+<!-- /#sidebar-wrapper -->
+<!-- Page Content -->
+<!-- <div id="page-content-wrapper">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+      <button class="btn navbar-toggler-icon" id="menu-toggle"></button>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="container navbar-nav  mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Fichier <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Edition <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Structure <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Traitement <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li ngbDropdown   class="nav-item dropdown">
+            <div class="active">
+              <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" >
+                CREAT
+              </a>
+              <div class="collapse list-unstyled" id="homeSubmenu">
+                <a class="dropdown-item" routerLink='creat'>CUSTOMER</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div>
+  </div> -->
+<!-- /#page-content-wrapper -->
+<!-- </div> -->
+<!-- /#wrapper -->
+
+
+
+
+<!-- <div class="wrapper"> -->
+
+<!-- Sidebar -->
+<!-- <nav id="sidebar">
+    <div class="sidebar-header">
+      <h3>Bootstrap Sidebar</h3>
+  </div>
+
+  <ul class="list-unstyled components">
+      <p>Dummy Heading</p>
+      <li class="active">
+          <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+          <ul class="collapse list-unstyled" id="homeSubmenu">
+              <li>
+                  <a href="#">Home 1</a>
+              </li>
+              <li>
+                  <a href="#">Home 2</a>
+              </li>
+              <li>
+                  <a href="#">Home 3</a>
+              </li>
+          </ul>
+      </li>
+      <li>
+          <a href="#">About</a>
+      </li>
+      <li>
+          <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+          <ul class="collapse list-unstyled" id="pageSubmenu">
+              <li>
+                  <a href="#">Page 1</a>
+              </li>
+              <li>
+                  <a href="#">Page 2</a>
+              </li>
+              <li>
+                  <a href="#">Page 3</a>
+              </li>
+          </ul>
+      </li>
+      <li>
+          <a href="#">Portfolio</a>
+      </li>
+      <li>
+          <a href="#">Contact</a>
+      </li>
+  </ul>
+  </nav> -->
+
+<!-- Page Content -->
+<!-- <div id="content">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+
+          <button type="button" id="sidebarCollapse" class="btn">
+              <i class="fas fa-align-left"></i>
+              <span></span>
+          </button>
+
+      </div>
+  </nav>
+       We'll fill this with dummy content -->
+<!-- </div>
+
+</div>  -->
