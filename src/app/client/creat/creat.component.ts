@@ -8,7 +8,7 @@ import { modaliteDePaiement } from 'src/app/models/modaliteDePaiement.model';
 import { Parametres } from 'src/app/models/paramtres.model';
 import { ClientService } from 'src/app/services/client.service';
 import { SocieteService } from 'src/app/services/societe.service';
-import { map } from 'rxjs/operators';
+
 
 
 
@@ -53,7 +53,7 @@ export class CreatComponent implements OnInit {
       // Ape:['',[Validators.maxLength(7)]],
       MatriculeFiscale: ['', [Validators.maxLength(12)]],
       // Siret:[''],
-      // Encours:[''],
+      Encours:[''],
       // NumeroPayeur:[''],
       CategorieTarif: [''],
       // DateCreation:[''],
@@ -143,8 +143,11 @@ export class CreatComponent implements OnInit {
       Etranger: false,
       Sommeil: false,
       ExonereTVA: false,
+      TauxRemise:0,
+      Encours:0,
+      NumeroBanqueTier:0,
       Numero: this.parametre.NUMCLI,
-      NumeroBanqueTier: this.parametre.ClientGen
+      NumeroPrincipale: this.parametre.ClientGen
     });
   }
 }

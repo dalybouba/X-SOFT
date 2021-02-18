@@ -59,7 +59,7 @@ searchableList: any;
 searchText : string = "";
   searchTerm: string;
   page = 1;
-  pageSize = 5;
+  pageSize = 20;
   collectionSize: number;
   currentRate = 8;
   client: Client[];

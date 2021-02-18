@@ -1,8 +1,13 @@
   body {
     overflow-x: hidden;
   }
+  .bg-light {
+    background-color: #406c98!important;
+}
+
   #sidebar-wrapper {
-    min-height: 100vh;
+    background-color: rgb(15, 12, 12);
+    /* min-height: 120vh; */
     margin-left: -15rem;
     -webkit-transition: margin .25s ease-out;
     -moz-transition: margin .25s ease-out;
@@ -10,12 +15,17 @@
     transition: margin .25s ease-out;
   }
   #sidebar-wrapper .sidebar-heading {
-    padding: 3.875rem 1.25rem;
-    font-size: 1.2rem;
+    padding: 6rem 1.25rem;
+    font-size: 2.5rem;
   }
   #sidebar-wrapper .list-group {
     width: 15rem;
   }
+  .list-group-item-action {
+    width: 100%;
+    color: #fbfdff;
+    text-align: inherit;
+}
   #page-content-wrapper {
     min-width: 100vw;
   }

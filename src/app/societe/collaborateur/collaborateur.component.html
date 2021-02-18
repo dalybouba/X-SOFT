@@ -26,7 +26,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let collaborateur of collaborateur |  FilterPipe: 
-        {Nom: searchText, Prenom: searchText, Fonction: searchText}">
+        {Nom: searchText, Prenom: searchText, Fonction: searchText} | slice: (page-1) * pageSize : page * pageSize">
             <th scope="row"> {{collaborateur.Nom}}</th>
             <td>{{collaborateur.Prenom}}</td>
             <td>{{collaborateur.Fonction}}</td>
@@ -48,7 +48,7 @@
         </tr>
     </tbody>
 </table>
-<ngb-pagination class="text-center" [collectionSize]="5" [(page)]="page" [maxSize]="5" [boundaryLinks]="true"
+<ngb-pagination class="text-center" [collectionSize]="10" [(page)]="page" [maxSize]="5" [boundaryLinks]="true"
 [pageSize]="pageSize" class="d-flex justify-content-center"></ngb-pagination>
 </div>
 

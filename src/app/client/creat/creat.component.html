@@ -18,14 +18,14 @@
                     <h6 class="container">Information</h6>
                     <div class="row container">
                         <div class="col-lg-4">
-
-                            <div class="form-group">
-                                <label class="container">Intitule</label>
-                                <input type="text" class="form-control" formControlName='Intitule'>
-                            </div>
                             <div *ngIf='INCCLI' class="form-group">
-                                <label class="container">Numero</label>
+                                <label class="container">Compte Client</label>
                                 <input  type="text" class="form-control" formControlName='Numero' readonly>
+                            </div>
+                          
+                            <div class="form-group">
+                                <label class="container" class="container">Activité</label>
+                                <input type="text" class="form-control" formControlName='Qualite'>
                             </div>
                             <div *ngIf='!INCCLI' class="form-group">
                                 <label class="container">Numero</label>
@@ -41,7 +41,7 @@
                                 </div>
                             </div> -->
                             <div class="form-group">
-                                <label class="container">NumeroPrincipale</label>
+                                <label class="container">Compte Collectif</label>
                                 <input type="text" class="form-control" formControlName='NumeroPrincipale'>
                             </div>
                             <!-- <div
@@ -59,7 +59,11 @@
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
-                                <label class="container">ContactPrincipale</label>
+                                <label class="container">Intitulé</label>
+                                <input type="text" class="form-control" formControlName='Intitule'>
+                            </div>
+                            <div class="form-group">
+                                <label class="container">Contact Principale</label>
                                 <input type="text" class="form-control" formControlName='ContactPrincipale'>
                             </div>
                             <!-- <div
@@ -75,13 +79,10 @@
                                 </div>
 
                             </div> -->
-                            <div class="form-group">
-                                <label class="container" class="container">Activiter</label>
-                                <input type="text" class="form-control" formControlName='Qualite'>
-                            </div>
+                           
                             <div class="form-group">
                                 <label class="container" class="container" class="container"
-                                    class="container">MatriculeFiscale</label>
+                                    class="container">Matricule Fiscale</label>
                                 <input type="text" class="form-control" formControlName='MatriculeFiscale'>
                             </div>
                             <!-- <div
@@ -107,7 +108,7 @@
                                     placeholder="Incoterm">
                             </div> -->
                             <div class="form-group" >
-                                <label class="container">Familletier</label>
+                                <label class="container">Famille</label>
                                 <select class="form-control" aria-label="Default select example" name="Familletier"
                                     formControlName='Familletier'>
                                     <option selected></option>
@@ -118,7 +119,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="container">CompteAuxiliaire</label>
+                                <label class="container">Compte Auxiliaire</label>
                                 <input type="text" class="form-control" formControlName='CompteAuxiliaire'>
                             </div>
                             <div class="form-group">
@@ -142,7 +143,7 @@
 
                             <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label class="container">CodePostal</label>
+                                    <label class="container">Code Postal</label>
                                     <input type="text" class="form-control" formControlName='CodePostal'>
                                 </div>
                                 <!-- <div *ngIf="clientForm.controls['CodePostal'].invalid && 
@@ -193,7 +194,7 @@
 
                             <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label class="container">Telephone</label>
+                                    <label class="container">Téléphone</label>
                                     <input type="text" class="form-control" formControlName='Telephone'>
                                 </div>
                             </div>
@@ -208,13 +209,13 @@
 
                             <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label class="container">Telecopie</label>
+                                    <label class="container">Télécopie</label>
                                     <input type="text" class="form-control" formControlName='Telecopie'>
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label class="container">SiteWeb</label>
+                                    <label class="container">Site Web</label>
                                     <input type="text" class="form-control" formControlName='SiteWeb'>
                                 </div>
                             </div>
@@ -230,40 +231,39 @@
                         </div>
                         <div class="col-lg-4"></div>
                         <div class="col-lg-4">
-                            <h6 class="container">Info TVA</h6>
                         </div>
                     </div>
                     <div class="row container">
-                        <div class="col-lg-4">
+                        <div class="col-lg-3">
                             <label class="container">Devise</label>
                             <div class="form-group">
 
                                 <select class="form-control" aria-label="Default select example" name="Devise"
                                     formControlName='Devise'>
-                                    <option selected>---Select--</option>
+                                    <option selected></option>
                                     <option *ngFor="let Devise of Devise" >
                                         {{Devise.DEVISE}}
                                     </option>
                                 </select>
                             </div>
-                            <label class="container">ModalitePaiement</label>
+                            <label class="container">Modalité De Paiement</label>
                             <div class="form-group">
 
                                 <select class="form-control" aria-label="Default select example" name="ModalitePaiement"
                                     formControlName='ModalitePaiement'>
-                                    <option selected>---Select--</option>
+                                    <option selected></option>
                                     <option *ngFor="let ModalitePaiement of ModalitePaiement">
                                         {{ModalitePaiement.Code}}
                                     </option>
                                 </select>
                             </div>
 
-                            <label class="container">CategorieTarif</label>
+                            <label class="container">Catégorie Tarifaire</label>
                             <div class="form-group">
 
                                 <select class="form-control" aria-label="Default select example" name="CategorieTarif"
                                     formControlName='CategorieTarif'>
-                                    <option selected>---Select--</option>
+                                    <option selected></option>
                                     <option *ngFor="let CategorieTarif of CategorieTarif">
                                         {{CategorieTarif.Categorie}}
                                     </option>
@@ -272,7 +272,7 @@
 
 
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-3">
                             <!-- <div class="form-group">
                                 <input type="text" class="form-control" formControlName='Depot' placeholder="Depot">
                             </div> -->
@@ -280,51 +280,56 @@
                             <div class="form-group">
                                 <input type="text" class="form-control" formControlName='TauxRemise'>
                             </div>
-                            <label class="container">N°Etab Secondaire</label>
-                            <div class="form-group">
-                                <input type="text" class="form-control" formControlName='Classement'>
-                            </div>
-                            <label class="container">Representant</label>
+                            
+                            <label class="container">Représentant</label>
                             <div class="form-group">
                                 <input type="text" class="form-control" formControlName='Collaborateur'>
                             </div>
+                            <label class="container">Limite</label>
+                            <div class="form-group">
+                                <input type="text" class="form-control" formControlName='Encours'>
+                            </div>
                         </div>
-                        <div class="col-lg-4">
-                            <label class="container">CategorieTVA</label>
+                        <div class="col-lg-3">
+                            <label class="container">Code TVA</label>
                             <div class="form-group">
                                 <input type="text" class="form-control" formControlName='CategorieTVA'>
                             </div>
-                            <label class="container">Categorie</label>
+                           
+                            <label class="container">Categorie TVA</label>
                             <div class="form-group">
                                 <input type="text" class="form-control" formControlName='Categorie'>
                             </div>
-                            <label class="container">NumeroBanqueTier</label>
+                            <label class="container">N°Etab Secondaire</label>
                             <div class="form-group">
-                                <input type="text" class="form-control" z formControlName='NumeroBanqueTier' readonly>
-                            </div>
+                                <input type="text" class="form-control" formControlName='Classement'>
+                            </div>                          
+                        </div>
+                        <div class="col-lg-3" style="padding-top: 5rem;" >                          
                             <div class="row" style="padding-left: 1rem;">
                                 <div class="form-check col-lg-6">
-
                                     <input type="checkbox" name="Timbre" formControlName='Timbre'>
-                                    <label>Timbre</label>
-                                </div>
-                                <div class="form-check col-lg-6">
+                                    <label style="padding-left: 1rem;">Timbre</label>
+                                </div>                             
+                            </div>
+                            <div class="row" style="padding-left: 1rem;">                            
+                                <div class="form-check col-lg-8">
                                     <input type="checkbox" name="ExonereTVA" formControlName='ExonereTVA'>
-                                    <label>
-                                        Exonéré TVA
+                                    <label style="padding-left: 1rem;">
+                                        ExonéréTVA
                                     </label>
                                 </div>
                             </div>
                             <div class="row" style="padding-left: 1rem;">
                                 <div class="form-check col-lg-6">
-
                                     <input type="checkbox" name="Sommeil" formControlName='Sommeil'>
-                                    <label>Sommeil</label>
-                                </div>
+                                    <label style="padding-left: 1rem;">Sommeil</label>
+                                </div>                             
+                            </div>
+                            <div class="row" style="padding-left: 1rem;">                          
                                 <div class="form-check col-lg-6">
-
                                     <input type="checkbox" name="Etranger" formControlName='Etranger'>
-                                    <label>Etranger</label>
+                                    <label style="padding-left: 1rem;">Étranger</label>
                                 </div>
                             </div>
                         </div>
@@ -333,7 +338,7 @@
                     <div class="row container">
 
                         <div class="col-lg-8">
-                            <label class="container">ADRESSELivraison</label>
+                            <label class="container">Adresse De Livraison</label>
                             <div class="form-group">
                                 <input type="text" class="form-control" formControlName='ADRESSELivraison'>
                             </div>
@@ -342,19 +347,19 @@
                     <div class="row container">
 
                         <div class="col-lg-2">
-                            <label class="container">CodePostal</label>
+                            <label class="container">Code Postal</label>
                             <div class="form-group">
                                 <input type="text" class="form-control" formControlName='CodePostalLivraison'>
                             </div>
                         </div>
                         <div class="col-lg-3">
-                            <label class="container">VilleLivraison</label>
+                            <label class="container">Ville De Livraison</label>
                             <div class="form-group">
                                 <input type="text" class="form-control" formControlName='VilleLivraison'>
                             </div>
                         </div>
                         <div class="col-lg-3">
-                            <label class="container">PaysLivraison</label>
+                            <label class="container">Pays De Livraison</label>
                             <div class="form-group">
                                 <input type="text" class="form-control" formControlName='PaysLivraison'>
                             </div>
@@ -386,8 +391,8 @@
                 </div>
             </div>
             <div class="row container">
-                <h5 class="col-lg-3">CREATEUR</h5>
-                <h5 class="col-lg-3">MODIFICATEUR</h5>
+                <p class="col-lg-3">Createur</p>
+                <p class="col-lg-3">Modificateur</p>
             </div>
             <div class="form-group text-center">
                 <button type="submit" class="btn btn-primary py-3 px-5" (click)='creatCustomer(clientForm.value)'>Ajouter
