@@ -64,17 +64,45 @@ return this.modePaiementB=true;
 
   edit(ID:number){
     //this.router.navigate([`devise/${Numero}`]);
-    this.router.navigateByUrl('settings/company/modaliteDePaiement', { skipLocationChange: true }).then(() => {
-      this.router.navigate([`settings/company/modaliteDePaiement/${ID}`]);
+    this.router.navigateByUrl('settings/company/paymentmethods', { skipLocationChange: true }).then(() => {
+      this.router.navigate([`settings/company/paymentmethods/${ID}`]);
   }); 
 
   }
   validateEdit(){
+    console.log(this.modePaiements)
+    this.societeServices.updatemodaliteDePaiement(this.modePaiements).subscribe(
+      (data)=>{
+        console.log(data);
+        this.router.navigate([`settings/company/paymentmethods`]);
+      }
+    );
 
   }
+
 
   validateCreat(modaliteDePaiement:any){
 
+    this.societeServices.creatmodaliteDePaiement(modaliteDePaiement).subscribe(
+      ()=>{
+        this.router.navigate([`settings/company/paymentmethods`]);
+        return this.modePaiementB=false;
+      }
+    );
   }
+  
+  delete(id: string) {
+    if(confirm("Are you sure to delete "+id)){
+    this.societeServices.deletemodaliteDePaiement(id).subscribe(res => {
+      if (res) {
+        this.societeServices.findModaliteDePaiement().subscribe(
+          data=>{
+            this.modePaiement=data;
+           
+          }
+          
+        );
+      }
+    })}}
 
 }

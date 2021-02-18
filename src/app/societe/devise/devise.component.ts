@@ -16,6 +16,7 @@ export class DeviseComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
   ) { }
+  
   creatDevise: any = false;
   devise: Devise[];
   ID: any;
@@ -55,17 +56,14 @@ export class DeviseComponent implements OnInit {
 
   edit(ID: number) {
     //this.router.navigate([`devise/${Numero}`]);
-    this.router.navigateByUrl('devise', { skipLocationChange: true }).then(() => {
-      this.router.navigate([`devise/${ID}`]);
+    this.router.navigateByUrl('settings/company/devise', { skipLocationChange: true }).then(() => {
+      this.router.navigate([`settings/company/devise/${ID}`]);
     });
   }
 
   creat() {
-    this.router.navigate([`devise`]);
+    this.ID=false;
     this.creatDevise = true;
-    // this.router.navigateByUrl('devise', { skipLocationChange: true }).then(() => {
-    //   this.router.navigate(['devise']);
-    // });
     return this.creatDevise;
 
   }
@@ -74,7 +72,7 @@ export class DeviseComponent implements OnInit {
 this.societeService.updateDevise(this.devises).subscribe(
   (data)=>{
     console.log(data);
-    this.router.navigate([`devise`]);
+    this.router.navigate([`settings/company/devise`]);
   }
 );}
 
@@ -83,7 +81,7 @@ validateCreat(devises:any){
 
   this.societeService.creatDevise(devises).subscribe(
     ()=>{
-      this.router.navigate([`devise`]);
+      this.router.navigate([`settings/company/devise`]);
       console.log(this.devises);
    
     }

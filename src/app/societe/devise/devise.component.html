@@ -1,18 +1,18 @@
 <form class="container">
     <br><br>
-    <h1 class="text-center">Devise LIST</h1>
+    <h1 class="text-center">Liste des devises</h1>
     <BUtton class="btn  btn-primary custom-btn py-0 px-3 pull-right"    (click)='creat()'><i class="bi bi-plus"></i><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
         <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
       </svg>Ajouter</BUtton>
 </form>
 <table class="container table table-striped" id="mytableofrows">
-    <thead>
+    <thead style="background-color:#2f4f4f ;">
         <tr>
-            <th scope="col">Code ISO</th>
-            <th scope="col">Devise</th>
-            <th scope="col">Libellé</th>
-            <th scope="col">Cours</th>
-            <th scope="col">Action</th>
+            <th style="color: white;" scope="col">Code ISO</th>
+            <th style="color: white;" scope="col">Devise</th>
+            <th style="color: white;" scope="col">Libellé</th>
+            <th style="color: white;" scope="col">Cours</th>
+            <th style="color: white;" scope="col">Action</th>
         </tr>
     </thead>
     <tbody>
@@ -36,7 +36,7 @@
                             <path
                                 d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
                         </svg></i></a>
-                <a class="btn  button"><i class="bi bi-x-circle"></i><svg xmlns="http://www.w3.org/2000/svg"
+                <a class="btn  button" (click)='deleteDevise(devise.ID)'><i class="bi bi-x-circle"></i><svg xmlns="http://www.w3.org/2000/svg"
                         width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                         <path
@@ -56,7 +56,7 @@
         <li  class="nav-item">
             <a class="nav-link" id="home-tab-just" data-toggle="tab" href="#home-just" role="tab"
                 aria-controls="home-just" aria-selected="true">
-                <h4>Update Devise</h4>
+                <h4>Modifier Devise</h4>
             </a>
         </li>
     </ul>
@@ -109,7 +109,7 @@
                         </div>
                     </div>
                     <div class="form-group text-center">
-                        <button type="submit" class="btn btn-primary py-1 px-6">Edit Customer</button>
+                        <button type="submit" class="btn btn-primary py-1 px-6">Valider</button>
                     </div>
                 </form>
             </div>
@@ -130,7 +130,7 @@
         <li class="nav-item">
             <a class="nav-link" id="home-tab-just" data-toggle="tab" href="#home-just" role="tab"
                 aria-controls="home-just" aria-selected="true">
-                <h4>Creat Devise</h4>
+                <h4>Ajouter Devise</h4>
             </a>
         </li>
     </ul>
@@ -172,7 +172,7 @@
                         </div>
                     </div>
                     <div class="form-group text-center">
-                        <button type="submit" class="btn btn-primary py-1 px-6"  (click)='validateCreat(deviseForm.value)'>Creat Devise</button>
+                        <button type="submit" class="btn btn-primary py-1 px-6"  (click)='validateCreat(deviseForm.value)'>Valider</button>
                     </div>
                 </form>
             </div>

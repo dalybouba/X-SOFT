@@ -31,7 +31,7 @@ export class UpdateComponent implements OnInit {
 
   ngOnInit() {
     this.clientForm = this.formBuilder.group({
-      ID:[''],
+  
       Intitule:[''],
       Type:[],
       NumeroPrincipale:[''],
@@ -81,6 +81,7 @@ export class UpdateComponent implements OnInit {
       CompteAuxiliaire:[''],
       ICE:[''],
       DevisFamilletiere:[''],
+     
     })
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
  
@@ -120,12 +121,9 @@ export class UpdateComponent implements OnInit {
     this.clientService.updateClient(this.client).subscribe(
       (data) => {
         console.log('message data', data);
-        this.router.navigate(['client-list']);
-       
+        this.router.navigate([`/customers/list`]); 
       }
     )
-  
-    
     console.log(this.client);
   }
 

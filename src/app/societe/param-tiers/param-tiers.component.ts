@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+
 import { CategorieTarif } from 'src/app/models/categorieTarifaires.model';
 import { familleTier } from 'src/app/models/familleTier.model';
 import { SocieteService } from 'src/app/services/societe.service';
@@ -12,167 +13,177 @@ import { SocieteService } from 'src/app/services/societe.service';
 })
 export class ParamTiersComponent implements OnInit {
   constructor(
-    private societeServices:SocieteService,
-    private router:Router,
-    private activatedRoute:ActivatedRoute,
+    private societeServices: SocieteService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
-    ) { 
-   
-    }
-categorieTarif:CategorieTarif[];
-creatcategorieTarif:any=false;
-creatfamilleTier:any=false;
-updateFamilleTier:any;
-updatecategoriesTarifs:any;
-ID:any=false;
-categoriesTarif:CategorieTarif;
-categorieTarifForm:FormGroup;
-familleTiers:familleTier[];
-famillesTiers:familleTier;
-familleTiersForm:FormGroup;
+  ) {
+
+
+  }
+  categorieTarif: CategorieTarif[];
+  creatcategorieTarif: any = false;
+  creatfamilleTier: any = false;
+  updateFamilleTier: any = false;
+  updatecategoriesTarifs: any = false;
+  ID: any;
+  ID1: any;
+  categoriesTarif: CategorieTarif;
+  categorieTarifForm: FormGroup;
+  familleTiers: familleTier[];
+  famillesTiers: familleTier;
+  familleTiersForm: FormGroup;
+
+
 
   ngOnInit(): void {
-  
+
     this.societeServices.findCategorieTarif().subscribe(
-      data=>{
-        this.categorieTarif=data;
-        
+      data => {
+        this.categorieTarif = data;
       }
-     
     );
-
-
     this.ID = this.activatedRoute.snapshot.paramMap.get('ID');
+    
     this.societeServices.findNumeroCategorieTarif(this.ID)
-    .subscribe(data => {
+      .subscribe(data => {
         this.categoriesTarif = data;
-        ;}
-       
-    );
-   this.ID=this.activatedRoute.snapshot.paramMap.get('ID');
-    this.societeServices.findNumerofamilleTier(this.ID)
-    .subscribe(data => {
+        return [this.updateFamilleTier=false,this.updatecategoriesTarifs=true]
+      }
+      );
+      this.ID1 = this.activatedRoute.snapshot.paramMap.get('ID1');
+    this.societeServices.findNumerofamilleTier(this.ID1)
+      .subscribe(data => {
         this.famillesTiers = data;
-   
-        ;}
-       
-    );
-
+        return [this.updateFamilleTier=true,this.updatecategoriesTarifs=false]
+     
+      }
+      );
 
     this.categorieTarifForm = this.formBuilder.group({
-      Categorie:[''],
-      PrixTTC:[''],
-     
+      Categorie: [''],
+      PrixTTC: [''],
+
     });
     this.familleTiersForm = this.formBuilder.group({
-      Code:[''],
-      Libelle:[''],
-      CategorieTarif:[''],
-      Exonere:[''],
-      
+      Code: [''],
+      Libelle: [''],
+      CategoriesTarifs: [''],
+      Exonere: [''],
+
     });
-
-
-
-
-
-
     this.societeServices.findfamilleTier().subscribe(
-      data=>{
-        this.familleTiers=data;
+      data => {
+        this.familleTiers = data;
       }
     );
+
   }
 
-
-
-
-  creatCategorieTarif(){
-    this.router.navigate([`param-tiers`]);
-    this.creatcategorieTarif=true; 
-    // this.router.navigateByUrl('devise', { skipLocationChange: true }).then(() => {
-    //   this.router.navigate(['devise']);
-  // });
-  this.ID=false;
-  this.creatfamilleTier=false;
+  creatCategorieTarif() {
+    this.creatcategorieTarif = true;
+    this.updateFamilleTier = false;
+    this.updatecategoriesTarifs = false;
+    this.creatfamilleTier = false;
     return this.creatcategorieTarif;
   }
-  editcategorieTarif(ID:number){
-    //this.router.navigate([`devise/${Numero}`]);
-    this.router.navigateByUrl('param-tiers', { skipLocationChange: true }).then(() => {
-      this.router.navigate([`param-tiers/${ID}`]);
-  }); 
-
+  editcategorieTarif(ID: number,section) {
+    this.router.navigateByUrl('settings/company/param-tiers', { skipLocationChange: true }).then(() => {
+      this.router.navigate([`settings/company/param-tiers/${ID}`]);
+    });
+     document.querySelector('#' + section)
+    .scrollIntoView();
   }
-  creatFamilleTiers(){
-    this.router.navigate([`param-tiers`]);
-    this.creatfamilleTier=true; 
-    // this.router.navigateByUrl('devise', { skipLocationChange: true }).then(() => {
-    //   this.router.navigate(['devise']);
-  // });
-  this.ID=false;
-  this.creatcategorieTarif=false;
+  creatFamilleTiers() {
+    this.creatfamilleTier = true;
+    this.updateFamilleTier = false;
+    this.updatecategoriesTarifs = false;
+    this.creatcategorieTarif = false;
     return this.creatfamilleTier;
   }
-  editfamilleTiers(ID:number){
-   
-    //this.router.navigate([`devise/${Numero}`]);
-    this.router.navigateByUrl('param-tiers', { skipLocationChange: true }).then(() => {
-      this.router.navigate([`param-tiers/${ID}`]);
-  }); 
- 
-
+  editfamilleTiers(ID1: number) {
+    this.router.navigateByUrl('settings/company/param-tiers', { skipLocationChange: true }).then(() => {
+      this.router.navigate([`settings/company/param-tiers/update/${ID1}`]);
+    });
   }
   validateEdit() {
     this.societeServices.updateCategorieTarif(this.categoriesTarif).subscribe(
-      (data)=>{
+      (data) => {
         console.log(data);
-        this.router.navigate([`param-tiers`]);
+        this.router.navigate([`settings/company/param-tiers`]);
       }
     ); console.log(this.categoriesTarif);
   }
   validateEditfamilleTier() {
     this.societeServices.updatefamilleTier(this.famillesTiers).subscribe(
-      (data)=>{
+      (data) => {
         console.log(data);
-        this.router.navigate([`param-tiers`]);
+        this.router.navigate([`settings/company/param-tiers`]);
       }
     ); console.log(this.famillesTiers);
   }
-  
-    
-    validateCreat(collaborateur:any){
-      console.log(collaborateur)
-      this.societeServices.creatCategorieTarif(collaborateur).subscribe(
-        ()=>{
-          this.router.navigate([`param-tiers`]);
-        }
-      )
-      console.log(collaborateur)
-    }
-    validateCreatfamilleTier(familleTier:any){
-      console.log(familleTier)
-      this.societeServices.creatfamilleTier(familleTier).subscribe(
-        ()=>{
-          this.router.navigate([`param-tiers`]);
-        }
-      )
-      console.log(familleTier)
-    }
- 
+  validateCreat(collaborateur: any) {
+    console.log(collaborateur)
+    this.societeServices.creatCategorieTarif(collaborateur).subscribe(
+      () => {
+        this.router.navigate([`settings/company/param-tiers`]);
+      }
+    )
+    console.log(collaborateur)
+  }
+  validateCreatfamilleTier(familleTier: any) {
+    console.log(familleTier)
+    this.societeServices.creatfamilleTier(familleTier).subscribe(
+      () => {
+        this.router.navigate([`settings/company/param-tiers`]);
+      }
+    )
+    console.log(familleTier)
+  }
+
+  currentSection = 'section1';
+
+  onSectionChange(sectionId: string) {
+    this.currentSection = sectionId;
+  }
+
+  scrollTo(section) {
+    document.querySelector('#' + section)
+      .scrollIntoView();
+  }
+
+  deleteFamilleTier(id: string) {
+    if(confirm("Are you sure to delete "+id)){
+    this.societeServices.deleteFamilleTier(id).subscribe(res => {
+      if (res) {
+        this.societeServices.findfamilleTier().subscribe(
+          data=>{
+            this.familleTiers=data;
+           
+          }
+          
+        );
+      }
+    })}
+  }
+  deleteCategorieTarif(id: string) {
+    if(confirm("Are you sure to delete "+id)){
+    this.societeServices.deleteCategorieTarif(id).subscribe(res => {
+      if (res) {
+        this.societeServices.findCategorieTarif().subscribe(
+          data=>{
+            this.categorieTarif=data;
+           
+          }
+          
+        );
+      }
+    })}
+  }
 
 
+//   setDefaultValues() {
+//     this.clientForm.patchValue({Timbre:false,Etranger:false,Sommeil:false});
+//  }
 
-  
-
-currentSection = 'section1';
-
-onSectionChange(sectionId: string) {
-  this.currentSection = sectionId;
-}
-
-scrollTo(section) {
-  document.querySelector('#' + section)
-  .scrollIntoView();
-}
 }

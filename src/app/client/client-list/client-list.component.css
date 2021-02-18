@@ -16,3 +16,18 @@
     .pull-right {
       float: right;
     }
+
+    /deep/ .pagination .page-item .page-link {
+  border-radius: 0 !important;
+}
+
+/deep/ .pagination .page-link {
+  border-top-style: none !important;
+  border-bottom-style: none !important;
+  background-color: #f6f6f6 !important;
+   border-color: #f6f6f6 !important;
+ 
+  color: black !important;
+  box-shadow: 0 0 0 0.001rem #2f4f4f !important;
+
+}

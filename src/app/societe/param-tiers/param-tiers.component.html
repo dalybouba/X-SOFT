@@ -19,11 +19,11 @@
                 <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
               </svg>Ajouter</BUtton>
             <table class="table">
-              <thead>
+              <thead style="background-color:#2f4f4f ;">
                 <tr>
-                  <th scope="col">Categorie</th>
-                  <th scope="col">Prix TTC</th>
-                  <th scope="col">Action</th>
+                  <th style="color: white;" scope="col">Categorie</th>
+                  <th style="color: white;" scope="col">Prix TTC</th>
+                  <th style="color: white;" scope="col">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -43,13 +43,13 @@
                                 <path
                                     d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                             </svg></a>
-                        <a class="btn btn-simple  button" (click)='editcategorieTarif(Categorie.ID)' (click)="scrollTo('section2')"><i class="fa fa-edit"><svg
+                        <a class="btn btn-simple  button" (click)='editcategorieTarif(Categorie.ID,section2)'><i class="fa fa-edit"><svg
                                     xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-pencil" viewBox="0 0 16 16">
                                     <path
                                         d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
                                 </svg></i></a>
-                        <a class="btn  button"><i class="bi bi-x-circle"></i><svg xmlns="http://www.w3.org/2000/svg"
+                        <a class="btn  button" (click)='deleteCategorieTarif(Categorie.ID)'><i class="bi bi-x-circle"></i><svg xmlns="http://www.w3.org/2000/svg"
                                 width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                                 <path
@@ -72,13 +72,13 @@
               </svg>Ajouter</BUtton>
             <table class="table">
                
-              <thead>
+              <thead style="background-color:#2f4f4f ;">
                 <tr>
-                  <th scope="col">Code</th>
-                  <th scope="col">Libelle</th>
-                  <th scope="col">CategorieTarif</th>
-                  <th scope="col">Exonere</th>
-                  <th>Action</th>
+                  <th style="color: white;" scope="col">Code</th>
+                  <th style="color: white;" scope="col">Libelle</th>
+                  <th style="color: white;" scope="col">CategorieTarif</th>
+                  <th style="color: white;" scope="col">Exonere</th>
+                  <th style="color: white;" scope="col">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -86,11 +86,7 @@
                     <td>{{familleTiers.Code}}</td>
                     <td>{{familleTiers.Libelle}}</td>
                     <td>
-                        <select name="CategorieTarif" [(ngModel)]="familleTiers.CategorieTarif">
-                            <option *ngFor="let CategorieTarif of CategorieTarif" [value]="CategorieTarif.value">  
-                            {{CategorieTarif.Categorie}}
-                            </option>
-                        </select>
+                        {{familleTiers.CategorieTarif}}
                     </td>
                   <td>
                       <div class="form-check col-lg-6"  >
@@ -106,13 +102,13 @@
                                   <path
                                       d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                               </svg></a>
-                          <a class="btn btn-simple  button" (click)='editfamilleTiers(familleTiers.ID)' (click)="scrollTo('section4')"><i class="fa fa-edit"><svg
+                          <a class="btn btn-simple  button" (click)='editfamilleTiers(familleTiers.ID)'  (click)="scrollTo('section4')"><i class="fa fa-edit"><svg
                                       xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                       class="bi bi-pencil" viewBox="0 0 16 16">
                                       <path
                                           d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
                                   </svg></i></a>
-                          <a class="btn  button"><i class="bi bi-x-circle"></i><svg xmlns="http://www.w3.org/2000/svg"
+                          <a class="btn  button" (click)='deleteFamilleTier(familleTiers.ID)'><i class="bi bi-x-circle"></i><svg xmlns="http://www.w3.org/2000/svg"
                                   width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
                                   <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                                   <path
@@ -173,7 +169,7 @@
 <br>
 <br>
 
-    <div *ngIf='ID' id="section2" >
+    <div *ngIf='updatecategoriesTarifs' id="section2" >
         <!-- <h1 class="text-center">UPDATE</h1> -->
         <ul class="nav nav-tabs nav-justified md-tabs indigo" id="myTabJust" role="tablist">
             <li class="nav-item">
@@ -241,9 +237,16 @@
                                 <label>Libelle</label>
                                 <input type="text" class="form-control" formControlName='Libelle' placeholder="Libelle">
                             </div>
-                            <div class="form-group col-lg-2">
+                            <div class="col-lg-2">
                                 <label>CategorieTarif</label>
-                                <input type="text" class="form-control" formControlName='CategorieTarif' placeholder="CategorieTarif">
+                                <div class="form-group" >
+                                    <select class="form-control" aria-label="Default select example" name="CategoriesTarifs" formControlName='CategoriesTarifs'>
+                                        <option selected>select</option>
+                                        <option *ngFor="let CategorieTarifs of categorieTarif">  
+                                        {{CategorieTarifs.Categorie}}
+                                        </option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="form-check col-sm-1" >
                                 <label>Exonere</label>
@@ -265,7 +268,7 @@
 <br>
 <br>
 
-    <div *ngIf='ID' id="section4" >
+    <div *ngIf='updateFamilleTier' id="section4" >
         <!-- <h1 class="text-center">UPDATE</h1> -->
         <ul class="nav nav-tabs nav-justified md-tabs indigo" id="myTabJust" role="tablist">
             <li class="nav-item">
@@ -280,7 +283,7 @@
                 <div class="shop__cart__table" id="productTable">
                     <form #familleTiersForm="ngForm" (ngSubmit)="validateEditfamilleTier()">
                         <div class="row">
-                            <div class="col-lg-4"></div>
+                            <div class="col-lg-2"></div>
                             <div class="form-group col-lg-2">
                                 <label>Code</label>
                                 <input type="text" class="form-control" [(ngModel)]='famillesTiers.Code'

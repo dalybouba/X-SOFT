@@ -10,13 +10,14 @@ import { ParamTiersComponent } from './param-tiers/param-tiers.component';
 const routes: Routes = [
   {path:'company' ,component:ParamSocieteComponent},
   {path:'settings/company/devise' ,component:DeviseComponent},
-  {path:'settings/companydevise/:ID' ,component:DeviseComponent},
+  {path:'settings/company/devise/:ID' ,component:DeviseComponent},
   {path:'settings/company/collaborateur' ,component:CollaborateurComponent},
-  {path:'settings/companycollaborateur/:ID' ,component:CollaborateurComponent},
+  {path:'settings/company/collaborateur/:ID' ,component:CollaborateurComponent},
   {path:'settings/company/param-tiers' ,component:ParamTiersComponent},
   {path:'settings/company/param-tiers/:ID' ,component:ParamTiersComponent},
-  {path:'settings/company/modaliteDePaiement' ,component:ModalitePaiementComponent},
-  {path:'settings/company/modaliteDePaiement/:ID' ,component:ModalitePaiementComponent},
+  {path:'settings/company/param-tiers/update/:ID1' ,component:ParamTiersComponent},
+  {path:'settings/company/paymentmethods' ,component:ModalitePaiementComponent},
+  {path:'settings/company/paymentmethods/:ID' ,component:ModalitePaiementComponent},
 ];
 
 @NgModule({

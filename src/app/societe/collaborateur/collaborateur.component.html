@@ -1,42 +1,44 @@
 <br>
 <br>
 <div class="container">
-    <h1 class="text-center">Collaborateur LIST</h1>
-    <BUtton class="btn  btn-primary custom-btn py-0 px-3 pull-right"    (click)='creat()'><i class="bi bi-plus"></i><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-      </svg>Ajouter</BUtton>
-</div>
+    <h1 class="text-center">Liste des Collaborateurs </h1>
+    <br>
+    <div class="row">
+        <div class="form-group col-lg-4">
+            <input class="form-control ml-6" type="text" placeholder="Filtrer..." name="searchText" [(ngModel)]="searchText" />
+        </div>
+        <div class="col-lg-6"></div>
+        <div class="col-lg-2">
+        <BUtton class="btn  btn-primary custom-btn pull-right"    (click)='creat()'(click)="scrollTo('section3')"><i class="bi bi-plus"></i><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+          </svg>Ajouter</BUtton>  
+        </div>     
+    </div>
+
 <table class="container table table-striped" id="mytableofrows">
-    <thead>
+    <thead style="background-color:#2f4f4f ;">
         <tr>
-            <th scope="col">Nom</th>
-            <th scope="col">Prenom</th>
-            <th scope="col">Fonction</th>
-            <th scope="col">Action</th>
+            <th style="color: white;" scope="col">Nom</th>
+            <th style="color: white;" scope="col">Prenom</th>
+            <th style="color: white;" scope="col">Fonction</th>
+            <th style="color: white;" scope="col">Action</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let collaborateur of collaborateur">
+        <tr *ngFor="let collaborateur of collaborateur |  FilterPipe: 
+        {Nom: searchText, Prenom: searchText, Fonction: searchText}">
             <th scope="row"> {{collaborateur.Nom}}</th>
             <td>{{collaborateur.Prenom}}</td>
             <td>{{collaborateur.Fonction}}</td>
 
             <td class="text-right" class="">
-                <a class="btn btn-simple  button" (click)='creat()' (click)="scrollTo('section3')"><i
-                        class="bi bi-plus-square"></i><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
-                        fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
-                        <path
-                            d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-                        <path
-                            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                    </svg></a>
                 <a class="btn btn-simple  button" (click)='edit(collaborateur.ID)' (click)="scrollTo('section2')"><i
                         class="fa fa-edit"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
                             fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
                             <path
                                 d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
                         </svg></i></a>
-                <a class="btn  button"><i class="bi bi-x-circle"></i><svg xmlns="http://www.w3.org/2000/svg" width="12"
+                <a class="btn  button" (click)='deleteCollaborateur(collaborateur.ID)'><i class="bi bi-x-circle"></i><svg xmlns="http://www.w3.org/2000/svg" width="12"
                         height="12" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                         <path
@@ -46,7 +48,9 @@
         </tr>
     </tbody>
 </table>
-
+<ngb-pagination class="text-center" [collectionSize]="5" [(page)]="page" [maxSize]="5" [boundaryLinks]="true"
+[pageSize]="pageSize" class="d-flex justify-content-center"></ngb-pagination>
+</div>
 
 
 
@@ -59,7 +63,7 @@
             <li class="nav-item">
                 <a class="nav-link" id="home-tab-just" data-toggle="tab" href="#home-just" role="tab"
                     aria-controls="home-just" aria-selected="true">
-                    <h4>Creat Collaborateur</h4>
+                    <h4>Ajouter Collaborateur</h4>
                 </a>
             </li>
         </ul>
@@ -104,7 +108,7 @@
 
                         <div class="form-group text-center">
                             <button type="submit" class="btn btn-primary py-1 px-6"
-                                (click)='validateCreat(collaborateurForm.value)'>Creat Collaborateur</button>
+                                (click)='validateCreat(collaborateurForm.value)'>Valider</button>
                         </div>
                     </form>
                 </div>
@@ -131,7 +135,7 @@
                 <div class="shop__cart__table" id="productTable">
                     <div class="row">
                         <div class="col-lg-5"></div>
-                        <h4 style="color: #007BFF;">Update Collaborator </h4>
+                        <h4 style="color: #007BFF;">Modifier Collaborator </h4>
                     </div>
                     <form #collaborateurForm="ngForm" (ngSubmit)="validateEdit()">
 

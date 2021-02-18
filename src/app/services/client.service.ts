@@ -3,15 +3,10 @@ import { HttpClient} from "@angular/common/http";
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Client } from '../models/clients.model';
 import { map} from 'rxjs/operators';
+import { Parametres } from '../models/paramtres.model';
 export const client$: BehaviorSubject<Client[]> = new BehaviorSubject([]);
-// const httpOptions : any    = {
-//   headers: new HttpHeaders({
-//     //'Content-Type':  'application/json',
-//     'Access-Control-Allow-Headers': 'Content-Type',
-//     'Access-Control-Allow-Methods': 'GET',
-//     'Access-Control-Allow-Origin': '*'
-//   })
-// };
+ //export const parametres$: BehaviorSubject<Parametres> = new BehaviorSubject([]);
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,6 +15,14 @@ export class ClientService {
   url ="http://192.168.0.30:8062/api/Client/Get";
   constructor(private http: HttpClient) {
     console.log(client$)
+  }
+  getParametre():Observable<Parametres> {
+    return this.http.get<Parametres>("http://41.231.46.234:8062/api/Parametres/Get")
+  //   .pipe(map(res => {
+  //     parametres$.next(res);
+  //     return res;   
+  // }));
+  
   }
   find(): Observable<Client[]> {
     return this.http.get<Client[]>(`${this.url}`)

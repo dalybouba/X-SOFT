@@ -1,9 +1,10 @@
 
 
 export class Client{
-    public ID: string;
+    
     public Intitule: string;
     public Type: number;
+    public Numero: string;
     public NumeroPrincipale: string;
     public ContactPrincipale: string;
     public Complement: string;
@@ -19,7 +20,7 @@ export class Client{
     public Encours: number;
     public NumeroPayeur: string;
     public CategorieTarif: number;
-    public CategorieComptabilite: number;
+    public ExonereTVA:boolean;
     public DateTime: Date;
     public Sommeil: boolean;
     public Depot: number;
@@ -34,6 +35,7 @@ export class Client{
     public Categorie: string;
     public Etranger: boolean;
     public Devise: string;
+    public  DeviseId: number;
     public CoursDevise: number;
     public ADRESSELivraison: string;
     public CodePostalLivraison: string;

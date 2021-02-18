@@ -138,6 +138,22 @@ updateCollaborateur(collaborateur: Collaborateur): Observable<Collaborateur> {
       }));
 }
 
+updatemodaliteDePaiement(modaliteDePaiement: modaliteDePaiement): Observable<modaliteDePaiement> {
+  console.log(modaliteDePaiement)
+  return this.http.put<modaliteDePaiement>("http://41.231.46.234:8062/api/Modalitepaiement/Edit", modaliteDePaiement)
+      .pipe(map(res => {
+          let modaliteDePaiementList = modaliteDePaiement$.value;
+          let index = modaliteDePaiementList.findIndex(x => x.ID == modaliteDePaiement.ID);
+          if (index >= 0) {
+            modaliteDePaiementList[index] = modaliteDePaiement;
+          } else {
+            modaliteDePaiementList.push(modaliteDePaiement);
+          }
+          modaliteDePaiement$.next(modaliteDePaiementList);
+          return res;
+      }));
+}
+
 creatDevise(devise: Devise): Observable<Devise> {
   console.log(devise)
   return this.http.post<Devise>("http://41.231.46.234:8062/api/Devise/Create", devise)
@@ -179,7 +195,19 @@ creatCollaborateur(collaborateur: Collaborateur): Observable<Collaborateur> {
       }));
     }
 
+    creatmodaliteDePaiement(modaliteDePaiement: modaliteDePaiement): Observable<modaliteDePaiement> {
+      console.log(modaliteDePaiement);
+      return this.http.post<modaliteDePaiement>("http://41.231.46.234:8062/api/Modalitepaiement/Create", modaliteDePaiement)
+          .pipe(map(res => {
+              let modaliteDePaiementList = modaliteDePaiement$.value;
+              modaliteDePaiementList.push(res);
+              modaliteDePaiement$.next(modaliteDePaiementList)
+              return res;
+          }));
+        }
+
     deleteDevise(id:string):Observable<boolean>{
+      console.log(id)
       return this.http.delete<boolean>("http://41.231.46.234:8062/api/Devise/Delete"+'/'+id)
           .pipe(map(res => {
               return res;
@@ -191,7 +219,23 @@ creatCollaborateur(collaborateur: Collaborateur): Observable<Collaborateur> {
               return res;
           }));
     }
-
-
+    deleteFamilleTier(id:string):Observable<boolean>{
+      return this.http.delete<boolean>("http://41.231.46.234:8062/api/familleTier/Delete"+'/'+id)
+          .pipe(map(res => {
+              return res;
+          }));
+    }
+    deleteCategorieTarif(id:string):Observable<boolean>{
+      return this.http.delete<boolean>("http://41.231.46.234:8062/api/CategorieTarif/Delete"+'/'+id)
+          .pipe(map(res => {
+              return res;
+          }));
+    }
+    deletemodaliteDePaiement(id:string):Observable<boolean>{
+      return this.http.delete<boolean>("http://41.231.46.234:8062/api/Modalitepaiement/Delete"+'/'+id)
+          .pipe(map(res => {
+              return res;
+          }));
+    }
 
 }

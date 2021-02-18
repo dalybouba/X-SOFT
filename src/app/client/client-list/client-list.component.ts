@@ -26,7 +26,6 @@ export class FilterPipe implements PipeTransform {
                       (x && new RegExp(filter[keyName], 'gi').test(item[keyName])) || filter[keyName] == "", true));
           }
           else {
-            console.log('here');
 
               return items.filter(item => {
                   return filterKeys.some((keyName) => {
@@ -55,12 +54,12 @@ constructor(
   private router:Router){
 
 }
-title = 'testJobNestedArray';
+
 searchableList: any;
 searchText : string = "";
   searchTerm: string;
   page = 1;
-  pageSize = 16;
+  pageSize = 5;
   collectionSize: number;
   currentRate = 8;
   client: Client[];
