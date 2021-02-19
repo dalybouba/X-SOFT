@@ -16,7 +16,15 @@ export class DeviseComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
   ) { }
-  
+
+
+  searchableList: any;
+  searchText: string = "";
+  searchTerm: string;
+  page = 1;
+  pageSize = 5;
+  collectionSize: number;
+  currentRate = 8
   creatDevise: any = false;
   devise: Devise[];
   ID: any;
@@ -62,51 +70,53 @@ export class DeviseComponent implements OnInit {
   }
 
   creat() {
-    this.ID=false;
+    this.ID = false;
     this.creatDevise = true;
     return this.creatDevise;
 
   }
 
   validateEdit() {
-this.societeService.updateDevise(this.devises).subscribe(
-  (data)=>{
-    console.log(data);
-    this.router.navigate([`settings/company/devise`]);
+    this.societeService.updateDevise(this.devises).subscribe(
+      (data) => {
+        console.log(data);
+        this.router.navigate([`settings/company/devise`]);
+      }
+    );
   }
-);}
 
 
-validateCreat(devises:any){
+  validateCreat(devises: any) {
 
-  this.societeService.creatDevise(devises).subscribe(
-    ()=>{
-      this.router.navigate([`settings/company/devise`]);
-      console.log(this.devises);
-   
-    }
-  )
-}
+    this.societeService.creatDevise(devises).subscribe(
+      () => {
+        this.router.navigate([`settings/company/devise`]);
+        console.log(this.devises);
 
-deleteDevise(id: string) {
-  if(confirm("Are you sure to delete "+id)){
-  this.societeService.deleteDevise(id).subscribe(res => {
-    if (res) {
-      this.societeService.find().subscribe(
-        data=>{
-          this.devise=data;
-         
+      }
+    )
+  }
+
+  deleteDevise(id: string) {
+    if (confirm("Are you sure to delete " + id)) {
+      this.societeService.deleteDevise(id).subscribe(res => {
+        if (res) {
+          this.societeService.find().subscribe(
+            data => {
+              this.devise = data;
+
+            }
+
+          );
         }
-        
-      );
+      })
     }
-  })}
-}
+  }
 
 
 
 
-currentSection = 'section1';
+  currentSection = 'section1';
 
   onSectionChange(sectionId: string) {
     this.currentSection = sectionId;
@@ -114,7 +124,7 @@ currentSection = 'section1';
 
   scrollTo(section) {
     document.querySelector('#' + section)
-    .scrollIntoView();
+      .scrollIntoView();
   }
 
 }

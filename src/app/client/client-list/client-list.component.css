@@ -31,3 +31,21 @@
   box-shadow: 0 0 0 0.001rem #2f4f4f !important;
 
 }
+tr {
+  width: 100%;
+  display: inline-table;
+  height:60px;
+  table-layout: fixed;
+    
+  }
+  
+  table{
+   height:300px; 
+   display: -moz-groupbox;
+  }
+  tbody{
+    overflow-y: scroll;
+    height: 500px;
+    width: 70%;
+    position: absolute;
+  }

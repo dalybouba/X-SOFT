@@ -15,7 +15,13 @@ modePaiementB:boolean=false;
 ID:any;
 modePaiements:modaliteDePaiement;
 modaliteDePaiementForm:FormGroup
-
+searchableList: any;
+searchText: string = "";
+searchTerm: string;
+page = 1;
+pageSize = 5;
+collectionSize: number;
+currentRate = 8
 
   constructor(
     private societeServices:SocieteService,

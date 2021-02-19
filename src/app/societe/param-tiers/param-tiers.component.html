@@ -15,9 +15,17 @@
     <div class="tab-content card pt-5" id="myTabContentJust">
         <div class="tab-pane fade show active" id="home-just" role="tabpanel" aria-labelledby="home-tab-just">
           <div class="shop__cart__table" id="productTable">
-            <BUtton class="btn  btn-primary custom-btn py-0 px-3 pull-right"    (click)='creatCategorieTarif()'><i class="bi bi-plus"></i><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-              </svg>Ajouter</BUtton>
+            <div class="row">
+                <div class="form-group col-lg-4">
+                    <input class="form-control ml-6" type="text" placeholder="Filtrer..." name="searchText" [(ngModel)]="searchText" />
+                </div>
+                <div class="col-lg-6"></div>
+                <div class="col-lg-2">
+                <BUtton class="btn  btn-primary custom-btn pull-right"    (click)='creatCategorieTarif()'(click)="scrollTo('section1')"><i class="bi bi-plus"></i><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                  </svg>Ajouter</BUtton>  
+                </div>     
+            </div>
             <table class="table">
               <thead style="background-color:#2f4f4f ;">
                 <tr>
@@ -27,7 +35,8 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor=' let Categorie  of categorieTarif'>
+                <tr *ngFor=' let Categorie  of categorieTarif |  FilterPipe: 
+                {Categorie: searchText}'>
                   <td>{{Categorie.Categorie}}</td>
                 <td>
                     <div class="form-check col-lg-6"  >
@@ -35,7 +44,7 @@
                     </div>
                 </td>
                     <td class="text-right" class="">
-                        <a class="btn btn-simple  button " (click)='creatCategorieTarif()' (click)="scrollTo('section1')" ><i class="bi bi-plus-square"></i><svg
+                        <a class="btn btn-simple  button " (click)='creatCategorieTarif()' ><i class="bi bi-plus-square"></i><svg
                                 xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-plus-square" viewBox="0 0 16 16">
                                 <path
@@ -67,9 +76,17 @@
         <div class="tab-pane fade" id="profile-just" role="tabpanel" aria-labelledby="profile-tab-just">
             
           <div class="shop__cart__table" id="productTable2">
-            <BUtton class="btn  btn-primary custom-btn py-0 px-3 pull-right"    (click)='creatFamilleTiers()'><i class="bi bi-plus"></i><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-              </svg>Ajouter</BUtton>
+            <div class="row">
+                <div class="form-group col-lg-4">
+                    <input class="form-control ml-6" type="text" placeholder="Filtrer..." name="searchText" [(ngModel)]="searchText" />
+                </div>
+                <div class="col-lg-6"></div>
+                <div class="col-lg-2">
+                <BUtton class="btn  btn-primary custom-btn pull-right"    (click)='creatFamilleTiers()'(click)="scrollTo('section3')"><i class="bi bi-plus"></i><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                  </svg>Ajouter</BUtton>  
+                </div>     
+            </div>
             <table class="table">
                
               <thead style="background-color:#2f4f4f ;">
@@ -82,7 +99,8 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor=' let familleTiers  of familleTiers'>
+                <tr *ngFor=' let familleTiers  of familleTiers |  FilterPipe: 
+                {Code: searchText,Libelle: searchText,CategorieTarif: searchText}'>
                     <td>{{familleTiers.Code}}</td>
                     <td>{{familleTiers.Libelle}}</td>
                     <td>
@@ -94,7 +112,7 @@
                       </div>
                   </td>
                       <td class="text-right" class="">
-                          <a class="btn btn-simple  button " (click)='creatFamilleTiers()' (click)="scrollTo('section3')" ><i class="bi bi-plus-square"></i><svg
+                          <a class="btn btn-simple  button " (click)='creatFamilleTiers()' ><i class="bi bi-plus-square"></i><svg
                                   xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                   class="bi bi-plus-square" viewBox="0 0 16 16">
                                   <path

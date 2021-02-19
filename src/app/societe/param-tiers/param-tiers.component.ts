@@ -21,6 +21,15 @@ export class ParamTiersComponent implements OnInit {
 
 
   }
+
+
+  searchableList: any;
+  searchText: string = "";
+  searchTerm: string;
+  page = 1;
+  pageSize = 5;
+  collectionSize: number;
+  currentRate = 8
   categorieTarif: CategorieTarif[];
   creatcategorieTarif: any = false;
   creatfamilleTier: any = false;

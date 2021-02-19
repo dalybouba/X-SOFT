@@ -7,6 +7,22 @@
     background-color: #2f4f4f;
     border-color: #000;
   }
-  .table-responsive {
-    max-height:300px;
-}
+
+  tr {
+    width: 100%;
+    display: inline-table;
+    height:60px;
+    table-layout: fixed;
+      
+    }
+    
+    table{
+     height:300px; 
+     display: -moz-groupbox;
+    }
+    tbody{
+      overflow-y: scroll;
+      height: 200px;
+      width: 70%;
+      position: absolute;
+    }

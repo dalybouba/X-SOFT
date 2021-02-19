@@ -20,16 +20,16 @@
                         <div class="col-lg-4">
                             <div *ngIf='INCCLI' class="form-group">
                                 <label class="container">Compte Client</label>
-                                <input  type="text" class="form-control" formControlName='Numero' readonly>
+                                <input type="text" class="form-control" formControlName='Numero' readonly>
                             </div>
-                          
+
                             <div class="form-group">
                                 <label class="container" class="container">Activité</label>
                                 <input type="text" class="form-control" formControlName='Qualite'>
                             </div>
                             <div *ngIf='!INCCLI' class="form-group">
                                 <label class="container">Numero</label>
-                                <input  type="text" class="form-control" formControlName='Numero'>
+                                <input type="text" class="form-control" formControlName='Numero'>
                             </div>
                             <!-- <div *ngIf="clientForm.controls['Intitule'].invalid && 
                             (clientForm.controls['Intitule'].dirty || clientForm.controls['Intitule'].touched)">
@@ -79,10 +79,10 @@
                                 </div>
 
                             </div> -->
-                           
+
                             <div class="form-group">
-                                <label class="container" class="container" class="container"
-                                    class="container">Matricule Fiscale</label>
+                                <label class="container" class="container" class="container" class="container">Matricule
+                                    Fiscale</label>
                                 <input type="text" class="form-control" formControlName='MatriculeFiscale'>
                             </div>
                             <!-- <div
@@ -107,7 +107,7 @@
                                 <input type="text" class="form-control" formControlName='Incoterm'
                                     placeholder="Incoterm">
                             </div> -->
-                            <div class="form-group" >
+                            <div class="form-group">
                                 <label class="container">Famille</label>
                                 <select class="form-control" aria-label="Default select example" name="Familletier"
                                     formControlName='Familletier'>
@@ -241,7 +241,7 @@
                                 <select class="form-control" aria-label="Default select example" name="Devise"
                                     formControlName='Devise'>
                                     <option selected></option>
-                                    <option *ngFor="let Devise of Devise" >
+                                    <option *ngFor="let Devise of Devise">
                                         {{Devise.DEVISE}}
                                     </option>
                                 </select>
@@ -280,7 +280,7 @@
                             <div class="form-group">
                                 <input type="text" class="form-control" formControlName='TauxRemise'>
                             </div>
-                            
+
                             <label class="container">Représentant</label>
                             <div class="form-group">
                                 <input type="text" class="form-control" formControlName='Collaborateur'>
@@ -295,7 +295,7 @@
                             <div class="form-group">
                                 <input type="text" class="form-control" formControlName='CategorieTVA'>
                             </div>
-                           
+
                             <label class="container">Categorie TVA</label>
                             <div class="form-group">
                                 <input type="text" class="form-control" formControlName='Categorie'>
@@ -303,16 +303,16 @@
                             <label class="container">N°Etab Secondaire</label>
                             <div class="form-group">
                                 <input type="text" class="form-control" formControlName='Classement'>
-                            </div>                          
+                            </div>
                         </div>
-                        <div class="col-lg-3" style="padding-top: 5rem;" >                          
+                        <div class="col-lg-3" style="padding-top: 5rem;">
                             <div class="row" style="padding-left: 1rem;">
                                 <div class="form-check col-lg-6">
                                     <input type="checkbox" name="Timbre" formControlName='Timbre'>
                                     <label style="padding-left: 1rem;">Timbre</label>
-                                </div>                             
+                                </div>
                             </div>
-                            <div class="row" style="padding-left: 1rem;">                            
+                            <div class="row" style="padding-left: 1rem;">
                                 <div class="form-check col-lg-8">
                                     <input type="checkbox" name="ExonereTVA" formControlName='ExonereTVA'>
                                     <label style="padding-left: 1rem;">
@@ -324,9 +324,9 @@
                                 <div class="form-check col-lg-6">
                                     <input type="checkbox" name="Sommeil" formControlName='Sommeil'>
                                     <label style="padding-left: 1rem;">Sommeil</label>
-                                </div>                             
+                                </div>
                             </div>
-                            <div class="row" style="padding-left: 1rem;">                          
+                            <div class="row" style="padding-left: 1rem;">
                                 <div class="form-check col-lg-6">
                                     <input type="checkbox" name="Etranger" formControlName='Etranger'>
                                     <label style="padding-left: 1rem;">Étranger</label>
@@ -395,8 +395,9 @@
                 <p class="col-lg-3">Modificateur</p>
             </div>
             <div class="form-group text-center">
-                <button type="submit" class="btn btn-primary py-3 px-5" (click)='creatCustomer(clientForm.value)'>Ajouter
-                    </button>
+                <button type="submit" class="btn btn-primary py-3 px-5"
+                    (click)='creatCustomer(clientForm.value)'>Ajouter
+                </button>
             </div>
         </div>
     </form>

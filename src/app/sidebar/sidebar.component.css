@@ -2,9 +2,12 @@
     overflow-x: hidden;
   }
   .bg-light {
-    background-color: #406c98!important;
+    background-color: #2f4f4f !important;
+    line-height: 2.7;
 }
-
+a.bg-light:focus, a.bg-light:hover, button.bg-light:focus, button.bg-light:hover {
+  background-color: #0a2033!important;
+}
   #sidebar-wrapper {
     background-color: rgb(15, 12, 12);
     /* min-height: 120vh; */
