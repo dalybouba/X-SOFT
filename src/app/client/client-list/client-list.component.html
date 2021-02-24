@@ -1,26 +1,28 @@
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom d-flex">    
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom d-flex">    
     <div class="collapse navbar-collapse" id="navbarSupportedContent">   
-      <ul class="container navbar-nav  mt-20 mt-lg-0">
-        <li class="nav-item">      
-        </li>
-        <li class="nav-item text-center">
-            <h2>Liste des clients</h2>
-        </li>
-        <li class="nav-item">   
-        </li>
-        <li ngbDropdown   class="nav-item dropdown">
-        </li>
+      <ul class="container navbar-nav  mt-20 mt-lg-10">
+        <li class="nav-item"> 
+            <h2 [ngStyle]="{'color':'#2f4f4f'}">Liste des clients</h2>     
+        </li> 
       </ul>
     </div>
-    <!-- <BUtton class="btn btn-primary custom-btn py-1 px-4"   style="text-align: right;" routerLink='/creat'>Ajouter</BUtton> -->
+   
+  </nav> -->
+  <br>
+  <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item" [ngStyle]="{'color':'#2f4f4f'}"><a href="#">Accueil</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Liste des clients</li>
+    </ol>
   </nav>
-
 <br>
+<h2 class="container" [ngStyle]="{'color':'#2f4f4f'}" [ngStyle]="{'color':'#2f4f4f'}">Liste des clients</h2> 
 <br>
 <br>
 <div class="container">
     <!-- <h2 class="text-left">Liste des clients</h2> -->
+    <!-- <h2 [ngStyle]="{'color':'#2f4f4f'}">Liste des clients</h2>    -->
     <div class="row">
         <div class="form-group col-lg-4">
             <input class="form-control ml-6" type="text" placeholder="Filtrer..." name="searchText" [(ngModel)]="searchText" />
@@ -33,28 +35,28 @@
         </div>     
     </div>
 <br>
-<table class="container table table-striped"  id="mytableofrows">
+<table class="container table table-striped">
     <thead style="background-color:#2f4f4f ;">
-        <tr >
-            
-            <th style="color: white;" scope="col">Intitulé</th>
-            <th style="color: white;" scope="col">Famille</th>
-            <th style="color: white;" scope="col">Pays</th>
-            <th style="color: white;" scope="col">EMail</th>
-            <th style="color: white;" scope="col">Telephone</th>
-            <th style="color: white;" class="" scope="col">Action</th>
+        <tr style="color: white;" >
+            <th>Compte</th>
+            <th>Intitulé</th>
+            <th>Famille</th>
+            <th>Pays</th>
+            <th>EMail</th>
+            <th>Telephone</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody >
         <tr *ngFor="let client of allClient |  FilterPipe: 
-        {Intitule: searchText, ID: searchText, Telephone: searchText, Type: searchText, Familletier: searchText,EMail: searchText} | slice: (page-1) * pageSize : page * pageSize" >
-           
+        {Intitule: searchText, ID: searchText, Telephone: searchText, Type: searchText, Familletier: searchText,EMail: searchText,Numero: searchText} | slice: (page-1) * pageSize : page * pageSize" >
+        <td>{{client.Numero}}</td>
             <td>{{client.Intitule}}</td>
             <td>{{client.Familletier}}</td>
             <td>{{client.Pays}}</td>
             <td>{{client.EMail}}</td>
             <td>{{client.Telephone}}</td>
-            <td class="text-right" class="">
+            <td>
               
                 <a class="btn btn-simple button" (click)='edit(client.ID)'><i class="fa fa-edit"><svg xmlns="http://www.w3.org/2000/svg"
                             width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">

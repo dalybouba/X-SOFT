@@ -1,48 +1,54 @@
+<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
+    aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item" [ngStyle]="{'color':'#2f4f4f'}"><a href="#">Accueil</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Ajouter</li>
+    </ol>
+</nav>
 <div class="container">
     <br>
-    <h1 class="text-center">AJOUTER CLIENT</h1>
+    <h3 class="" [ngStyle]="{'color':'#2f4f4f'}">Nouveau Client</h3>
+    <br>
     <ul class="nav nav-tabs nav-justified md-tabs indigo" id="myTabJust" role="tablist">
         <li class="nav-item">
-            <a class="nav-link active" id="home-tab-just" data-toggle="tab" href="#home-just" role="tab"
-                aria-controls="home-just" aria-selected="false">Identification</a>
+            <a *ngIf='!ClientId' class="nav-link active" id="home-tab-just" data-toggle="tab" href="#home-just"
+                role="tab" aria-controls="home-just" aria-selected="true"
+                [ngStyle]="{'color':'#2f4f4f'}">Identification</a>
+            <a *ngIf='ClientId' class="nav-link" id="home-tab-just" data-toggle="tab" href="#home-just" role="tab"
+                aria-controls="home-just" aria-selected="false" [ngStyle]="{'color':'#2f4f4f'}">Identification</a>
         </li>
+
         <li class="nav-item">
             <a class="nav-link" id="profile-tab-just" data-toggle="tab" href="#profile-just" role="tab"
-                aria-controls="profile-just" aria-selected="false">Parametres</a>
+                aria-controls="profile-just" aria-selected="false" [ngStyle]="{'color':'#2f4f4f'}">Parametres</a>
+        </li>
+        <li *ngIf='ClientId' class="nav-item">
+            <a class="nav-link" id="contact-tab-just" data-toggle="tab" href="#contact-just" role="tab"
+                aria-controls="contact-just" aria-selected="false" [ngStyle]="{'color':'#2f4f4f'}">Contact</a>
         </li>
     </ul>
-    <form [formGroup]='clientForm'>
+    <form [formGroup]='clientForm' >
         <div class="tab-content card pt-5" id="myTabContentJust">
-            <div class="tab-pane fade show active" id="home-just" role="tabpanel" aria-labelledby="home-tab-just">
+            <div *ngIf='!ClientId' class="tab-pane fade show active" id="home-just" role="tabpanel"
+                aria-labelledby="home-tab-just">
                 <div class="shop__cart__table" id="productTable">
                     <h6 class="container">Information</h6>
                     <div class="row container">
                         <div class="col-lg-4">
-                            <div *ngIf='INCCLI' class="form-group">
+                            <div class="form-group">
                                 <label class="container">Compte Client</label>
-                                <input type="text" class="form-control" formControlName='Numero' readonly>
+                                <input [readonly]='INCCLI' type="text" class="form-control form-control-sm" formControlName='Numero'>
                             </div>
 
                             <div class="form-group">
                                 <label class="container" class="container">Activité</label>
-                                <input type="text" class="form-control" formControlName='Qualite'>
-                            </div>
-                            <div *ngIf='!INCCLI' class="form-group">
-                                <label class="container">Numero</label>
-                                <input type="text" class="form-control" formControlName='Numero'>
-                            </div>
-                            <!-- <div *ngIf="clientForm.controls['Intitule'].invalid && 
-                            (clientForm.controls['Intitule'].dirty || clientForm.controls['Intitule'].touched)">
-                                <div *ngIf="clientForm.controls['Intitule'].errors.maxlength" class="text-danger">
-                                    Intitule must have less than 35 characters !!
-                                </div>
-                                <div *ngIf="clientForm.controls['Intitule'].errors.required" class="text-danger">
-                                    Intitule name is required !!
-                                </div>
-                            </div> -->
+                                <input type="text" class="form-control form-control-sm" formControlName='Qualite'>
+                            </div>                      
+
                             <div class="form-group">
                                 <label class="container">Compte Collectif</label>
-                                <input type="text" class="form-control" formControlName='NumeroPrincipale'>
+                                <input type="text" class="form-control form-control-sm"
+                                    formControlName='NumeroPrincipale'>
                             </div>
                             <!-- <div
                                 *ngIf="clientForm.controls['NumeroPrincipale'].invalid && 
@@ -60,11 +66,21 @@
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label class="container">Intitulé</label>
-                                <input type="text" class="form-control" formControlName='Intitule'>
+                                <input type="text" class="form-control form-control-sm" formControlName='Intitule'>
+                            </div>
+                            <div *ngIf="clientForm.controls['Intitule'].invalid && 
+                            (clientForm.controls['Intitule'].dirty || clientForm.controls['Intitule'].touched)">
+                                <div *ngIf="clientForm.controls['Intitule'].errors.maxlength" class="text-danger">
+                                    Intitule must have less than 35 characters !!
+                                </div>
+                                <div *ngIf="clientForm.controls['Intitule'].errors.required" class="text-danger">
+                                    Intitule name is required !!
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label class="container">Contact Principale</label>
-                                <input type="text" class="form-control" formControlName='ContactPrincipale'>
+                                <input type="text" class="form-control form-control-sm"
+                                    formControlName='ContactPrincipale'>
                             </div>
                             <!-- <div
                                 *ngIf="clientForm.controls['ContactPrincipale'].invalid && 
@@ -83,7 +99,8 @@
                             <div class="form-group">
                                 <label class="container" class="container" class="container" class="container">Matricule
                                     Fiscale</label>
-                                <input type="text" class="form-control" formControlName='MatriculeFiscale'>
+                                <input type="text" class="form-control form-control-sm"
+                                    formControlName='MatriculeFiscale'>
                             </div>
                             <!-- <div
                                 *ngIf="clientForm.controls['MatriculeFiscale'].invalid && 
@@ -104,27 +121,41 @@
                         <div class="col-lg-3">
                             <!-- <div class="form-group">
                                 <label class="container" class="container" class="container" class="container">Incoterm</label>
-                                <input type="text" class="form-control" formControlName='Incoterm'
+                                <input type="text" class="form-control form-control-sm" formControlName='Incoterm'
                                     placeholder="Incoterm">
                             </div> -->
                             <div class="form-group">
                                 <label class="container">Famille</label>
-                                <select class="form-control" aria-label="Default select example" name="Familletier"
-                                    formControlName='Familletier'>
+                                <select class="form-control form-control-sm" aria-label="Default select example"
+                                    name="FamilletierId" formControlName='FamilletierId' (change)="changed($event)">
                                     <option selected></option>
-                                    <option *ngFor="let Familletier of familleTier">
+                                    <option *ngFor="let Familletier of familleTier" [value]='Familletier.ID'>
                                         {{Familletier.Code}}
                                     </option>
                                 </select>
                             </div>
+                            <!-- <div class="form-group">
+                                <label class="container" for="typeahead-focus">Famille</label>
+                                <input
+                                id="typeahead-focus"
+                                type="text"
+                                class="form-control"
+                                formControlName='Familletier'
+                                [ngbTypeahead]="search"
+                                (focus)="focus$.next($any($event).target.value)"
+                                (click)="click$.next($any($event).target.value)"
+                                #instance="ngbTypeahead"
+                              />
+                            </div> -->
 
                             <div class="form-group">
                                 <label class="container">Compte Auxiliaire</label>
-                                <input type="text" class="form-control" formControlName='CompteAuxiliaire'>
+                                <input type="text" class="form-control form-control-sm"
+                                    formControlName='CompteAuxiliaire'>
                             </div>
                             <div class="form-group">
                                 <label class="container">ICE</label>
-                                <input type="text" class="form-control" formControlName='ICE'>
+                                <input type="text" class="form-control form-control-sm" formControlName='ICE'>
                             </div>
                         </div>
                     </div>
@@ -135,7 +166,7 @@
                             <div class="col-lg-8">
                                 <div class="form-group">
                                     <label class="container">Adresse</label>
-                                    <input type="text" class="form-control" formControlName='Adresse'>
+                                    <input type="text" class="form-control form-control-sm" formControlName='Adresse'>
                                 </div>
                             </div>
                         </div>
@@ -144,7 +175,8 @@
                             <div class="col-lg-3">
                                 <div class="form-group">
                                     <label class="container">Code Postal</label>
-                                    <input type="text" class="form-control" formControlName='CodePostal'>
+                                    <input type="text" class="form-control form-control-sm"
+                                        formControlName='CodePostal'>
                                 </div>
                                 <!-- <div *ngIf="clientForm.controls['CodePostal'].invalid && 
                             (clientForm.controls['CodePostal'].dirty || clientForm.controls['CodePostal'].touched)">
@@ -159,7 +191,7 @@
                             <div class="col-lg-3">
                                 <div class="form-group">
                                     <label class="container">Ville</label>
-                                    <input type="text" class="form-control" formControlName='Ville'>
+                                    <input type="text" class="form-control form-control-sm" formControlName='Ville'>
                                 </div>
                                 <!-- <div *ngIf="clientForm.controls['Ville'].invalid && 
                             (clientForm.controls['Ville'].dirty || clientForm.controls['Ville'].touched)">
@@ -177,7 +209,7 @@
                             <div class="col-lg-2">
                                 <div class="form-group">
                                     <label class="container">Pays</label>
-                                    <input type="text" class="form-control" formControlName='Pays'>
+                                    <input type="text" class="form-control form-control-sm" formControlName='Pays'>
                                 </div>
                                 <!-- <div *ngIf="clientForm.controls['Pays'].invalid && 
                             (clientForm.controls['Pays'].dirty || clientForm.controls['Pays'].touched)">
@@ -195,13 +227,13 @@
                             <div class="col-lg-3">
                                 <div class="form-group">
                                     <label class="container">Téléphone</label>
-                                    <input type="text" class="form-control" formControlName='Telephone'>
+                                    <input type="text" class="form-control form-control-sm" formControlName='Telephone'>
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <div class="form-group">
                                     <label class="container">EMail</label>
-                                    <input type="text" class="form-control" formControlName='EMail'>
+                                    <input type="text" class="form-control form-control-sm" formControlName='EMail'>
                                 </div>
                             </div>
                         </div>
@@ -210,27 +242,25 @@
                             <div class="col-lg-3">
                                 <div class="form-group">
                                     <label class="container">Télécopie</label>
-                                    <input type="text" class="form-control" formControlName='Telecopie'>
+                                    <input type="text" class="form-control form-control-sm" formControlName='Telecopie'>
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <div class="form-group">
                                     <label class="container">Site Web</label>
-                                    <input type="text" class="form-control" formControlName='SiteWeb'>
+                                    <input type="text" class="form-control form-control-sm" formControlName='SiteWeb'>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade" id="profile-just" role="tabpanel" aria-labelledby="profile-tab-just">
+            <div *ngIf='!ClientId' class="tab-pane fade" id="profile-just" role="tabpanel"
+                aria-labelledby="profile-tab-just">
                 <div class="shop__cart__table" id="productTable2">
                     <div class="row container">
                         <div class="col-lg-4">
                             <h6 class="container">Option de Traitement</h6>
-                        </div>
-                        <div class="col-lg-4"></div>
-                        <div class="col-lg-4">
                         </div>
                     </div>
                     <div class="row container">
@@ -238,10 +268,10 @@
                             <label class="container">Devise</label>
                             <div class="form-group">
 
-                                <select class="form-control" aria-label="Default select example" name="Devise"
-                                    formControlName='Devise'>
+                                <select class="form-control form-control-sm" aria-label="Default select example"
+                                    name="Devise" formControlName='DeviseId' (change)="changed($event)">
                                     <option selected></option>
-                                    <option *ngFor="let Devise of Devise">
+                                    <option *ngFor="let Devise of Devise" [value]="Devise.ID">
                                         {{Devise.DEVISE}}
                                     </option>
                                 </select>
@@ -249,10 +279,12 @@
                             <label class="container">Modalité De Paiement</label>
                             <div class="form-group">
 
-                                <select class="form-control" aria-label="Default select example" name="ModalitePaiement"
-                                    formControlName='ModalitePaiement'>
+                                <select class="form-control form-control-sm" aria-label="Default select example"
+                                    name="ModalitePaiement" formControlName='ModalitePaiementId'
+                                    (change)="changed($event)">
                                     <option selected></option>
-                                    <option *ngFor="let ModalitePaiement of ModalitePaiement">
+                                    <option *ngFor="let ModalitePaiement of ModalitePaiement"
+                                        [value]='ModalitePaiement.ID'>
                                         {{ModalitePaiement.Code}}
                                     </option>
                                 </select>
@@ -261,10 +293,10 @@
                             <label class="container">Catégorie Tarifaire</label>
                             <div class="form-group">
 
-                                <select class="form-control" aria-label="Default select example" name="CategorieTarif"
-                                    formControlName='CategorieTarif'>
+                                <select class="form-control form-control-sm" aria-label="Default select example"
+                                    name="CategorieTarif" formControlName='CategorieTarifId' (change)="changed($event)">
                                     <option selected></option>
-                                    <option *ngFor="let CategorieTarif of CategorieTarif">
+                                    <option *ngFor="let CategorieTarif of CategorieTarif" [value]='CategorieTarif.ID'>
                                         {{CategorieTarif.Categorie}}
                                     </option>
                                 </select>
@@ -274,35 +306,40 @@
                         </div>
                         <div class="col-lg-3">
                             <!-- <div class="form-group">
-                                <input type="text" class="form-control" formControlName='Depot' placeholder="Depot">
+                                <input type="text" class="form-control form-control-sm" formControlName='Depot' placeholder="Depot">
                             </div> -->
                             <label class="container">Taux De Remise %</label>
                             <div class="form-group">
-                                <input type="text" class="form-control" formControlName='TauxRemise'>
+                                <input type="text" class="form-control form-control-sm" formControlName='TauxRemise'>
                             </div>
-
                             <label class="container">Représentant</label>
                             <div class="form-group">
-                                <input type="text" class="form-control" formControlName='Collaborateur'>
+                                <select class="form-control form-control-sm" aria-label="Default select example"
+                                    name="Collaborateur" formControlName='CollaborateurId' (change)="changed($event)">
+                                    <option selected></option>
+                                    <option *ngFor="let Collaborateur of Collaborateur" [value]='Collaborateur.ID'>
+                                        {{Collaborateur.Nom}}
+                                    </option>
+                                </select>
                             </div>
                             <label class="container">Limite</label>
                             <div class="form-group">
-                                <input type="text" class="form-control" formControlName='Encours'>
+                                <input type="text" class="form-control form-control-sm" formControlName='Encours'>
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <label class="container">Code TVA</label>
                             <div class="form-group">
-                                <input type="text" class="form-control" formControlName='CategorieTVA'>
+                                <input type="text" class="form-control form-control-sm" formControlName='CategorieTVA'>
                             </div>
 
                             <label class="container">Categorie TVA</label>
                             <div class="form-group">
-                                <input type="text" class="form-control" formControlName='Categorie'>
+                                <input type="text" class="form-control form-control-sm" formControlName='Categorie'>
                             </div>
                             <label class="container">N°Etab Secondaire</label>
                             <div class="form-group">
-                                <input type="text" class="form-control" formControlName='Classement'>
+                                <input type="text" class="form-control form-control-sm" formControlName='Classement'>
                             </div>
                         </div>
                         <div class="col-lg-3" style="padding-top: 5rem;">
@@ -340,7 +377,8 @@
                         <div class="col-lg-8">
                             <label class="container">Adresse De Livraison</label>
                             <div class="form-group">
-                                <input type="text" class="form-control" formControlName='ADRESSELivraison'>
+                                <input type="text" class="form-control form-control-sm"
+                                    formControlName='ADRESSELivraison'>
                             </div>
                         </div>
                     </div>
@@ -349,19 +387,21 @@
                         <div class="col-lg-2">
                             <label class="container">Code Postal</label>
                             <div class="form-group">
-                                <input type="text" class="form-control" formControlName='CodePostalLivraison'>
+                                <input type="text" class="form-control form-control-sm"
+                                    formControlName='CodePostalLivraison'>
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <label class="container">Ville De Livraison</label>
                             <div class="form-group">
-                                <input type="text" class="form-control" formControlName='VilleLivraison'>
+                                <input type="text" class="form-control form-control-sm"
+                                    formControlName='VilleLivraison'>
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <label class="container">Pays De Livraison</label>
                             <div class="form-group">
-                                <input type="text" class="form-control" formControlName='PaysLivraison'>
+                                <input type="text" class="form-control form-control-sm" formControlName='PaysLivraison'>
                             </div>
 
                         </div>
@@ -373,16 +413,18 @@
                             <label class="container">Commentaire</label>
                             <div class="mb-3">
                                 <label class="container" for="exampleFormControlTextarea1" class="form-label"></label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                <textarea class="form-control form-control-sm" id="exampleFormControlTextarea1" rows="3"
                                     formControlName='Commentaire'></textarea>
                             </div>
                             <div class="mb-3">
                                 <label class="container" for="formFile" class="form-label">Jointe1</label>
-                                <input class="form-control" type="file" id="formFile" formControlName='Jointe1'>
+                                <input class="form-control form-control-sm" type="file" id="formFile"
+                                    formControlName='Jointe1'>
                             </div>
                             <div class="mb-3">
                                 <label class="container" for="formFile" class="form-label">Jointe2</label>
-                                <input class="form-control" type="file" id="formFile" formControlName='Jointe2'>
+                                <input class="form-control form-control-sm" type="file" id="formFile"
+                                    formControlName='Jointe2'>
                             </div>
 
                         </div>
@@ -390,16 +432,28 @@
 
                 </div>
             </div>
-            <div class="row container">
-                <p class="col-lg-3">Createur</p>
-                <p class="col-lg-3">Modificateur</p>
+            <div *ngIf='ClientId' class="tab-pane fade show active" id="contact-just" role="tabpanel"
+                aria-labelledby="contact-tab-just">
+                <div class="shop__cart__table" id="productTable2">
+                    <app-contact [ClientId]='ClientId'></app-contact>
+
+                </div>
             </div>
-            <div class="form-group text-center">
-                <button type="submit" class="btn btn-primary py-3 px-5"
-                    (click)='creatCustomer(clientForm.value)'>Ajouter
-                </button>
+            <div *ngIf='!ClientId'>
+                <div class="row container">
+                    <p class="col-lg-3">Createur</p>
+                    <p class="col-lg-3">Modificateur</p>
+                </div>
+                <div class="form-group text-center">
+                    <button type="submit" [disabled]="clientForm.invalid" class="btn btn-primary py-3 px-5"
+                        (click)='createCustomer(clientForm.value)'>Valider
+                    </button>
+                </div>
             </div>
         </div>
     </form>
-
 </div>
+
+<!-- <div *ngIf='ClientId'   class="container">
+        <app-contact  [ClientId]='ClientId'></app-contact>
+    </div> -->

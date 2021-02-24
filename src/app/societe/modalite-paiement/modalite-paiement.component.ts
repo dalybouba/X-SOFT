@@ -14,14 +14,10 @@ modePaiement:modaliteDePaiement[];
 modePaiementB:boolean=false;
 ID:any;
 modePaiements:modaliteDePaiement;
-modaliteDePaiementForm:FormGroup
-searchableList: any;
+modaliteDePaiementForm:FormGroup;
 searchText: string = "";
-searchTerm: string;
-page = 1;
-pageSize = 5;
-collectionSize: number;
-currentRate = 8
+
+
 
   constructor(
     private societeServices:SocieteService,
@@ -31,11 +27,7 @@ currentRate = 8
     ) { }
 
   ngOnInit(): void {
-    this.societeServices.findModaliteDePaiement().subscribe(
-      data=>{
-        this.modePaiement=data;
-      }
-    );
+  this.getModaliteDePaiement();
 this.ID=this.activatedRoute.snapshot.paramMap.get('ID')
 this.societeServices.findNumeromodaliteDePaiement(this.ID).subscribe(
   data=>{
@@ -50,7 +42,13 @@ this.modaliteDePaiementForm=this.formBuilder.group({
 });
 
   }
-
+getModaliteDePaiement(){
+  this.societeServices.findModaliteDePaiement().subscribe(
+    data=>{
+      this.modePaiement=data;
+    }
+  );
+}
 
   currentSection = 'section1';
   onSectionChange(sectionId: string) {
@@ -63,7 +61,6 @@ this.modaliteDePaiementForm=this.formBuilder.group({
   }
 
   creat(){
-   // this.router.navigate([`settings/company/modaliteDePaiement`]);
     this.ID=false;
 return this.modePaiementB=true;
   }
@@ -78,8 +75,7 @@ return this.modePaiementB=true;
   validateEdit(){
     console.log(this.modePaiements)
     this.societeServices.updatemodaliteDePaiement(this.modePaiements).subscribe(
-      (data)=>{
-        console.log(data);
+      ()=>{
         this.router.navigate([`settings/company/paymentmethods`]);
       }
     );
@@ -91,7 +87,7 @@ return this.modePaiementB=true;
 
     this.societeServices.creatmodaliteDePaiement(modaliteDePaiement).subscribe(
       ()=>{
-        this.router.navigate([`settings/company/paymentmethods`]);
+        this.getModaliteDePaiement;
         return this.modePaiementB=false;
       }
     );

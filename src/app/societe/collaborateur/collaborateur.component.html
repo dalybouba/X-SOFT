@@ -17,21 +17,21 @@
 <div >
 <table class="container table table-striped">
     <thead style="background-color:#2f4f4f ;">
-        <tr>
-            <th style="color: white;" scope="col">Nom</th>
-            <th style="color: white;" scope="col">Prenom</th>
-            <th style="color: white;" scope="col">Fonction</th>
-            <th style="color: white;" scope="col">Action</th>
+        <tr  style="color: white;">
+            <th scope="col">Nom</th>
+            <th>Prenom</th>
+            <th>Fonction</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let collaborateur of collaborateur |  FilterPipe: 
-        {Nom: searchText, Prenom: searchText, Fonction: searchText} | slice: (page-1) * pageSize : page * pageSize">
+        {Nom: searchText, Prenom: searchText, Fonction: searchText}">
             <th scope="row"> {{collaborateur.Nom}}</th>
             <td>{{collaborateur.Prenom}}</td>
             <td>{{collaborateur.Fonction}}</td>
 
-            <td class="text-right" class="">
+            <td>
                 <a class="btn btn-simple  button" (click)='edit(collaborateur.ID)' (click)="scrollTo('section2')"><i
                         class="fa fa-edit"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
                             fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
@@ -91,6 +91,17 @@
                             <div class="form-group col-lg-2">
                                 <input type="text" class="form-control" formControlName='Fonction'
                                     placeholder="Fonction">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4"></div>
+                            <div class="form-group col-lg-2">
+                                <input type="text" class="form-control" formControlName='CodePostal'
+                                    placeholder="CodePostal">
+                            </div>
+                            <div class="form-group col-lg-2">
+                                <input type="text" class="form-control" formControlName='EMail'
+                                    placeholder="EMail">
                             </div>
                         </div>
                         <div class="row">

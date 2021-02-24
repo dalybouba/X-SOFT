@@ -6,18 +6,20 @@ import { DeviseComponent } from './devise/devise.component';
 import { ModalitePaiementComponent } from './modalite-paiement/modalite-paiement.component';
 import { ParamSocieteComponent } from './param-societe/param-societe.component';
 import { ParamTiersComponent } from './param-tiers/param-tiers.component';
+import { ProcessingParamComponent } from './processing-param/processing-param.component';
 
 const routes: Routes = [
   {path:'company' ,component:ParamSocieteComponent},
-  {path:'settings/company/devise' ,component:DeviseComponent},
-  {path:'settings/company/devise/:ID' ,component:DeviseComponent},
-  {path:'settings/company/collaborateur' ,component:CollaborateurComponent},
-  {path:'settings/company/collaborateur/:ID' ,component:CollaborateurComponent},
-  {path:'settings/company/param-tiers' ,component:ParamTiersComponent},
-  {path:'settings/company/param-tiers/:ID' ,component:ParamTiersComponent},
-  {path:'settings/company/param-tiers/update/:ID1' ,component:ParamTiersComponent},
-  {path:'settings/company/paymentmethods' ,component:ModalitePaiementComponent},
-  {path:'settings/company/paymentmethods/:ID' ,component:ModalitePaiementComponent},
+  {path:'company/devise' ,component:DeviseComponent},
+  {path:'company/devise/:ID' ,component:DeviseComponent},
+  {path:'company/collaborateur' ,component:CollaborateurComponent},
+  {path:'company/collaborateur/:ID' ,component:CollaborateurComponent},
+  {path:'company/param-tiers' ,component:ParamTiersComponent},
+  {path:'company/param-tiers/:ID' ,component:ParamTiersComponent},
+  {path:'company/param-tiers/update/:ID1' ,component:ParamTiersComponent},
+  {path:'company/paymentmethods' ,component:ModalitePaiementComponent},
+  {path:'company/paymentmethods/:ID' ,component:ModalitePaiementComponent},
+  {path:'company/processing' ,component:ProcessingParamComponent},
 ];
 
 @NgModule({

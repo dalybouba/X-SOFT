@@ -18,13 +18,8 @@ export class DeviseComponent implements OnInit {
   ) { }
 
 
-  searchableList: any;
+
   searchText: string = "";
-  searchTerm: string;
-  page = 1;
-  pageSize = 5;
-  collectionSize: number;
-  currentRate = 8
   creatDevise: any = false;
   devise: Devise[];
   ID: any;
@@ -78,21 +73,25 @@ export class DeviseComponent implements OnInit {
 
   validateEdit() {
     this.societeService.updateDevise(this.devises).subscribe(
-      (data) => {
-        console.log(data);
+      () => {
+      
         this.router.navigate([`settings/company/devise`]);
       }
     );
   }
+  get() {
+    this.societeService.find().subscribe(
+      data => {
+        this.devise = data;
+      }
+    );
+  }
 
-
-  validateCreat(devises: any) {
-
+  validateCreat(devises: any) {  
     this.societeService.creatDevise(devises).subscribe(
-      () => {
-        this.router.navigate([`settings/company/devise`]);
-        console.log(this.devises);
-
+      () => {    
+        this.get();
+        return this.creatDevise = false;
       }
     )
   }

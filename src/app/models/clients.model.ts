@@ -1,7 +1,7 @@
 
 
 export class Client{
-    
+    public ID:number;
     public Intitule: string;
     public Type: number;
     public Numero: string;
@@ -19,7 +19,8 @@ export class Client{
     public Siret: string;
     public Encours: number;
     public NumeroPayeur: string;
-    public CategorieTarif: number;
+    public CategorieTarif: string;
+    public CategorieTarifId: number;
     public ExonereTVA:boolean;
     public DateTime: Date;
     public Sommeil: boolean;
@@ -47,12 +48,15 @@ export class Client{
     public Classement: string;
     public Jointe1: string;
     public Jointe2: string;
-    public Collaborateur: number;
+    public Collaborateur: string;
+    public CollaborateurId: number;
     public ModalitePaiement: string;
+    public ModalitePaiementId: number;
     public Incoterm: string;
     public CompteAuxiliaire: string;
     public ICE: string;
-    public Familletier: number;
+    public Familletier: string;
+    public FamilletierId: number;
     public CREATEUR: number;
     public MODIFICATEUR: number;
 

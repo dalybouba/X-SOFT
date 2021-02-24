@@ -1,14 +1,24 @@
+<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
+    aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item" [ngStyle]="{'color':'#2f4f4f'}"><a href="#">Accueil</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Modifier</li>
+    </ol>
+</nav>
 <div class="container">
     <br>
-    <h1 class="text-center">Modifier LE CLIENT</h1>
+    <br>
+    <h3 class="" [ngStyle]="{'color':'#2f4f4f'}">Modifier LE CLIENT Numero : {{client.Numero}}</h3>
+    <br>
+    <br>
     <ul class="nav nav-tabs nav-justified md-tabs indigo" id="myTabJust" role="tablist">
         <li class="nav-item">
             <a class="nav-link active" id="home-tab-just" data-toggle="tab" href="#home-just" role="tab"
-                aria-controls="home-just" aria-selected="true">Identification</a>
+                aria-controls="home-just" aria-selected="true" [ngStyle]="{'color':'#2f4f4f'}">Identification</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" id="profile-tab-just" data-toggle="tab" href="#profile-just" role="tab"
-                aria-controls="profile-just" aria-selected="false">Parametres</a>
+                aria-controls="profile-just" aria-selected="false" [ngStyle]="{'color':'#2f4f4f'}">Parametres</a>
         </li>
         <!-- <li class="nav-item">
             <a class="nav-link" id="client-tab-just" data-toggle="tab" href="#client-just" role="tab"
@@ -23,128 +33,135 @@
         <div class="tab-content card pt-5" id="myTabContentJust">
             <div class="tab-pane fade show active" id="home-just" role="tabpanel" aria-labelledby="home-tab-just">
                 <div class="shop__cart__table" id="productTable">
-                    <h6>Information</h6>
+                    <h6 class="container">Information</h6>
                     <div class="row container">
-                        <div class="col-lg-6">
-                            <label class="container">Intitule</label>
+                        <div class="col-lg-4">
+                            <label class="container">Numero</label>
                             <div class="form-group">
-                                <input type="text" class="form-control" [(ngModel)]='client.Intitule'
-                                    [ngModelOptions]="{standalone: true}" >
+                                <input type="text" class="form-control form-control-sm" [(ngModel)]='client.Numero'
+                                    [ngModelOptions]="{standalone: true}" readonly>
                             </div>
-                            <label class="container">NumeroPrincipale</label>
+                            <label class="container">Compte Collectif</label>
                             <div class="form-group">
-                                <input type="text" class="form-control" [(ngModel)]='client.NumeroPrincipale'
-                                    [ngModelOptions]="{standalone: true}">
+                                <input type="text" class="form-control form-control-sm"
+                                    [(ngModel)]='client.NumeroPrincipale' [ngModelOptions]="{standalone: true}">
                             </div>
-                            <label class="container">ContactPrincipale</label>
+
+                            <label class="container">Activité</label>
                             <div class="form-group">
-                                <input type="text" class="form-control" [(ngModel)]='client.ContactPrincipale'
-                                    [ngModelOptions]="{standalone: true}" >
-                            </div>
-                            <label class="container">Activiter</label>
-                            <div class="form-group">
-                                <input type="text" class="form-control" [(ngModel)]='client.Qualite'
+                                <input type="text" class="form-control form-control-sm" [(ngModel)]='client.Qualite'
                                     [ngModelOptions]="{standalone: true}" placeholder="">
                             </div>
                         </div>
-                        <div class="col-lg-6">
-                            <label class="container">MatriculeFiscale</label>
+                        <div class="col-lg-4">
+                            <label class="container">Intitule</label>
                             <div class="form-group">
-                                <input type="text" class="form-control" [(ngModel)]='client.MatriculeFiscale'
-                                    [ngModelOptions]="{standalone: true}" placeholder="">
+                                <input type="text" class="form-control form-control-sm" [(ngModel)]='client.Intitule'
+                                    [ngModelOptions]="{standalone: true}">
                             </div>
-                            <label class="container">Incoterm</label>
+                            <label class="container">Contact Principale</label>
                             <div class="form-group">
-                                <input type="text" class="form-control" [(ngModel)]='client.Incoterm'
-                                    [ngModelOptions]="{standalone: true}" placeholder="">
+                                <input type="text" class="form-control form-control-sm"
+                                    [(ngModel)]='client.ContactPrincipale' [ngModelOptions]="{standalone: true}">
                             </div>
-                            <div >  
-                                <label class="container">Familletier</label>                            
-                                <select class="form-control" aria-label="Default select example" name="Familletier"  [(ngModel)]='client.Familletier'
-                                [ngModelOptions]="{standalone: true}">
-                                    <option selected>{{client.Familletier}}</option>
-                                    <option *ngFor="let Familletier of familleTier">  
-                                    {{Familletier.Code}}
+                            <label class="container">Matricule Fiscale</label>
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-sm"
+                                    [(ngModel)]='client.MatriculeFiscale' [ngModelOptions]="{standalone: true}"
+                                    placeholder="">
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+
+                            <div class="form-group">
+                                <label class="container">Famille</label>
+                                <select class="form-control form-control-sm" aria-label="Default select example"
+                                    name="FamilleTierId" [(ngModel)]='client.FamilleTierId'
+                                    [ngModelOptions]="{standalone: true}">
+                                    <option selected>{{client.FamilleTier}}</option>
+                                    <option *ngFor="let Familletier of familleTier" [value]='Familletier.ID'>
+                                        {{Familletier.Code}}
                                     </option>
                                 </select>
                             </div>
-                            <label class="container">CompteAuxiliaire</label> 
+                            <label class="container">Compte Auxiliaire</label>
                             <div class="form-group">
-                                <input type="text" class="form-control" [(ngModel)]='client.CompteAuxiliaire'
-                                    [ngModelOptions]="{standalone: true}" placeholder="">
+                                <input type="text" class="form-control form-control-sm"
+                                    [(ngModel)]='client.CompteAuxiliaire' [ngModelOptions]="{standalone: true}"
+                                    placeholder="">
                             </div>
                             <label class="container">ICE</label>
                             <div class="form-group">
-                                <input type="text" class="form-control" [(ngModel)]='client.ICE'
+                                <input type="text" class="form-control form-control-sm" [(ngModel)]='client.ICE'
                                     [ngModelOptions]="{standalone: true}" placeholder="">
                             </div>
                         </div>
                     </div>
-                    <h6>Coordonnées</h6>
+                    <h6 class="container">Coordonnées</h6>
                     <div class="row container">
-                       
+
                         <div class="col-lg-8">
-                            
+
                             <div class="form-group">
                                 <label class="container">Adresse</label>
-                                <input type="text" class="form-control" [(ngModel)]='client.Adresse'
+                                <input type="text" class="form-control form-control-sm" [(ngModel)]='client.Adresse'
                                     [ngModelOptions]="{standalone: true}" placeholder="">
                             </div>
                         </div>
                     </div>
                     <div class="row container">
-                        
+
                         <div class="col-lg-2">
-                            
+
                             <div class="form-group">
-                                <label class="container">CodePostal</label>
-                                <input type="text" class="form-control" [(ngModel)]='client.CodePostal'
+                                <label class="container">Code Postal</label>
+                                <input type="text" class="form-control form-control-sm" [(ngModel)]='client.CodePostal'
                                     [ngModelOptions]="{standalone: true}" placeholder="">
                             </div>
                         </div>
-                       
+
                         <div class="form-group col-lg-3">
                             <label class="container">Ville</label>
-                            <input type="text" class="form-control" [(ngModel)]='client.Ville'
+                            <input type="text" class="form-control form-control-sm" [(ngModel)]='client.Ville'
                                 [ngModelOptions]="{standalone: true}" placeholder="">
                         </div>
-                        
+
                         <div class="form-group col-lg-3">
                             <label class="container">Pays</label>
-                            <input type="text" class="form-control" [(ngModel)]='client.Pays'
+                            <input type="text" class="form-control form-control-sm" [(ngModel)]='client.Pays'
                                 [ngModelOptions]="{standalone: true}" placeholder="">
                         </div>
                     </div>
                     <div class="row container">
-                        
+
                         <div class="col-lg-3">
-                            
+
                             <div class="form-group">
-                                <label class="container">Telephone</label>
-                                <input type="text" class="form-control" [(ngModel)]='client.Telephone'
+                                <label class="container">Téléphone</label>
+                                <input type="text" class="form-control form-control-sm" [(ngModel)]='client.Telephone'
                                     [ngModelOptions]="{standalone: true}" placeholder="">
                             </div>
                         </div>
-                        
+
                         <div class="form-group col-lg-3">
                             <label class="container">EMail</label>
-                            <input type="text" class="form-control" [(ngModel)]='client.EMail'
+                            <input type="text" class="form-control form-control-sm" [(ngModel)]='client.EMail'
                                 [ngModelOptions]="{standalone: true}" placeholder="">
                         </div>
                     </div>
                     <div class="row container">
-                       
+
                         <div class="col-lg-3">
-                            
+
                             <div class="form-group">
-                                <label class="container">Telecopie</label>
-                                <input type="text" class="form-control" [(ngModel)]='client.Telecopie'
+                                <label class="container">Télécopie</label>
+                                <input type="text" class="form-control form-control-sm" [(ngModel)]='client.Telecopie'
                                     [ngModelOptions]="{standalone: true}" placeholder="">
                             </div>
                         </div>
                         <div class="form-group col-lg-3">
                             <label class="container">SiteWeb</label>
-                            <input type="text" class="form-control" [(ngModel)]='client.SiteWeb'
+                            <input type="text" class="form-control form-control-sm" [(ngModel)]='client.SiteWeb'
                                 [ngModelOptions]="{standalone: true}" placeholder="">
                         </div>
                     </div>
@@ -156,158 +173,188 @@
                         <div class="col-lg-4">
                             <h6>Option de Traitement</h6>
                         </div>
-                        <div class="col-lg-4"></div>
-                        <div class="col-lg-4">
-                            <h6>Info TVA</h6>
-                        </div>
                     </div>
                     <div class="row container">
-                        <div class="col-lg-4">
-                            <label>Devise</label>
-                            <div class="form-group">                              
-                                <select class="form-control" aria-label="Default select example" name="Devise"  [(ngModel)]='client.Devise'
-                                [ngModelOptions]="{standalone: true}">
+                        <div class="col-lg-3">
+                            <label class="container">Devise</label>
+                            <div class="form-group">
+                                <select class="form-control form-control-sm" aria-label="Default select example"
+                                    name="Devise" [(ngModel)]='client.DeviseId' [ngModelOptions]="{standalone: true}">
                                     <option selected>{{client.Devise}}</option>
-                                    <option *ngFor="let Devise of Devise">  
-                                    {{Devise.DEVISE}}
+                                    <option *ngFor="let Devise of Devise" [value]='Devise.ID'>
+                                        {{Devise.DEVISE}}
                                     </option>
                                 </select>
                             </div>
-                            <label>ModalitePaiement</label>
-                            <div class="form-group">                              
-                                <select class="form-control" aria-label="Default select example" name="Devise"  [(ngModel)]='client.ModalitePaiement'
-                                [ngModelOptions]="{standalone: true}">
+                            <label class="container">Modalité de Paiement</label>
+                            <div class="form-group">
+                                <select class="form-control form-control-sm" aria-label="Default select example"
+                                    name="Devise" [(ngModel)]='client.ModalitePaiementId'
+                                    [ngModelOptions]="{standalone: true}">
                                     <option selected>{{client.ModalitePaiement}}</option>
-                                    <option *ngFor="let ModalitePaiement of ModalitePaiement">  
-                                    {{ModalitePaiement.Code}}
+                                    <option *ngFor="let ModalitePaiement of ModalitePaiement"
+                                        [value]='ModalitePaiement.ID'>
+                                        {{ModalitePaiement.Code}}
                                     </option>
                                 </select>
                             </div>
-                            <label>CategorieTarif</label>
-                            <div class="form-group" >                              
-                                <select class="form-control" aria-label="Default select example" name="Devise"  [(ngModel)]='client.CategorieTarif'
-                                [ngModelOptions]="{standalone: true}">
+                            <label class="container">Catégorie Tarifaire</label>
+                            <div class="form-group">
+                                <select class="form-control form-control-sm" aria-label="Default select example"
+                                    name="Devise" [(ngModel)]='client.CategorieTarifId'
+                                    [ngModelOptions]="{standalone: true}">
                                     <option selected>{{client.CategorieTarif}}</option>
-                                    <option *ngFor="let CategorieTarif of CategorieTarif">  
-                                    {{CategorieTarif.Categorie}}
+                                    <option *ngFor="let CategorieTarif of CategorieTarif" [value]='CategorieTarif.ID'>
+                                        {{CategorieTarif.Categorie}}
                                     </option>
                                 </select>
                             </div>
-                           
+
                         </div>
-                        <div class="col-lg-4">
-                            <label class="container">TauxRemise</label>
-                            <div >                              
-                                <input type="text" class="form-control" [(ngModel)]='client.TauxRemise'
+                        <div class="col-lg-3">
+                            <label class="container">Taux de Remise</label>
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-sm" [(ngModel)]='client.TauxRemise'
                                     [ngModelOptions]="{standalone: true}" placeholder="">
                             </div>
-                           <label class="container">N°Etab Secondaire</label>
+
+                            <label>Représentant</label>
                             <div class="form-group">
-                                <input type="text" class="form-control" [(ngModel)]='client.Classement'
-                                    [ngModelOptions]="{standalone: true}" placeholder="">
+                                <select class="form-control form-control-sm" aria-label="Default select example"
+                                    name="CollaborateurId" [(ngModel)]='client.CollaborateurId'
+                                    [ngModelOptions]="{standalone: true}">
+                                    <option selected>{{client.Collaborateur}}</option>
+                                    <option *ngFor="let Collaborateur of Collaborateur" [value]='Collaborateur.ID'>
+                                        {{Collaborateur.Nom}}
+                                    </option>
+                                </select>
                             </div>
-                            <label class="container">Representant</label>
+                            <label class="container">Limite</label>
                             <div class="form-group">
-                                <input type="text" class="form-control" [(ngModel)]='client.Collaborateur'
+                                <input type="text" class="form-control form-control-sm" [(ngModel)]='client.Encours'
                                     [ngModelOptions]="{standalone: true}" placeholder="">
                             </div>
                         </div>
-                        <div class="col-lg-4">
-                            <label class="container">CategorieTVA</label>
+                        <div class="col-lg-3">
+                            <label class="container">N°Etab Secondaire</label>
                             <div class="form-group">
-                                <input type="text" class="form-control" [(ngModel)]='client.CategorieTVA'
+                                <input type="text" class="form-control form-control-sm" [(ngModel)]='client.Classement'
                                     [ngModelOptions]="{standalone: true}" placeholder="">
                             </div>
-                            <label class="container">Categorie</label>
+                            <label class="container">Catégorie TVA</label>
                             <div class="form-group">
-                                <input type="text" class="form-control" [(ngModel)]='client.Categorie'
+                                <input type="text" class="form-control form-control-sm"
+                                    [(ngModel)]='client.CategorieTVA' [ngModelOptions]="{standalone: true}"
+                                    placeholder="">
+                            </div>
+                            <label class="container">Catégorie</label>
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-sm" [(ngModel)]='client.Categorie'
                                     [ngModelOptions]="{standalone: true}" placeholder="">
                             </div>
-                            <div class="row container" style="padding-left: 1rem;">
-                                <div class="form-check col-lg-6">          
-                                    <input  type="checkbox"  name="Timbre" [ngModelOptions]="{standalone: true}"  [(ngModel)]='client.Timbre'>
-                                    <label>Timbre</label>                                                                                                           
-                                </div>
+                        </div>
+
+                        <div class="col-lg-3" style="padding-top: 5rem;">
+                            <div class="row" style="padding-left: 1rem;">
                                 <div class="form-check col-lg-6">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        Exonéré TVA
+                                    <input type="checkbox" [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]='client.Timbre'>
+                                    <label style="padding-left: 1rem;">Timbre</label>
+                                </div>
+                            </div>
+                            <div class="row" style="padding-left: 1rem;">
+                                <div class="form-check col-lg-8">
+                                    <input type="checkbox" [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]='client.ExonereTVA'>
+                                    <label style="padding-left: 1rem;">
+                                        ExonéréTVA
                                     </label>
                                 </div>
                             </div>
-                            <div class="row container" style="padding-left: 1rem;">
+                            <div class="row" style="padding-left: 1rem;">
                                 <div class="form-check col-lg-6">
-                                    
-                                    <input type="checkbox"  name="Sommeil"  [ngModelOptions]="{standalone: true}"  [(ngModel)]='client.Sommeil'> 
-                                    <label>Sommeil</label>                                                                  
-                                </div>
-                                <div class="form-check col-lg-6">
-                                    
-                                    <input  type="checkbox"   name="Etranger"  [ngModelOptions]="{standalone: true}"  [(ngModel)]='client.Etranger'>  
-                                    <label>Etranger</label>                                
+                                    <input type="checkbox" [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]='client.Sommeil'>
+                                    <label style="padding-left: 1rem;">Sommeil</label>
                                 </div>
                             </div>
-
+                            <div class="row" style="padding-left: 1rem;">
+                                <div class="form-check col-lg-6">
+                                    <input type="checkbox" [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]='client.Etranger'>
+                                    <label style="padding-left: 1rem;">Étranger</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div>
                         <h6>Info de Livraison</h6>
                         <div class="row container">
-                            
+
                             <div class="col-lg-8">
-                                <label class="container">ADRESSELivraison</label>
+                                <label class="container">ADRESSE de Livraison</label>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" [(ngModel)]='client.ADRESSELivraison'
-                                        [ngModelOptions]="{standalone: true}" placeholder="">
+                                    <input type="text" class="form-control form-control-sm"
+                                        [(ngModel)]='client.ADRESSELivraison' [ngModelOptions]="{standalone: true}"
+                                        placeholder="">
                                 </div>
                             </div>
                         </div>
                         <div class="row container">
-                            
+
                             <div class="col-lg-2">
-                                <label class="container">CodePostal</label>
+                                <label class="container">Code Postal</label>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" [(ngModel)]='client.CodePostalLivraison'
-                                        [ngModelOptions]="{standalone: true}" placeholder="">
+                                    <input type="text" class="form-control form-control-sm"
+                                        [(ngModel)]='client.CodePostalLivraison' [ngModelOptions]="{standalone: true}"
+                                        placeholder="">
                                 </div>
                             </div>
-                            <label class="container">VilleLivraison</label>
-                            <div class="form-group col-lg-3">
-                                <input type="text" class="form-control" [(ngModel)]='client.VilleLivraison'
-                                    [ngModelOptions]="{standalone: true}">
+                            <div class="col-lg-3">
+                                <label class="container">Ville de Livraison</label>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm"
+                                        [(ngModel)]='client.VilleLivraison' [ngModelOptions]="{standalone: true}">
+                                </div>
                             </div>
-                            <label class="container">Pays</label>
-                            <div class="form-group col-lg-3">
-                                <input type="text" class="form-control" [(ngModel)]='client.PaysLivraison'
-                                    [ngModelOptions]="{standalone: true}" placeholder="Pays">
+                            <div class="col-lg-3">
+                                <label class="container">Pays</label>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-sm"
+                                        [(ngModel)]='client.PaysLivraison' [ngModelOptions]="{standalone: true}"
+                                        placeholder="">
+                                </div>
                             </div>
-
                         </div>
                         <h6>Information Complémentaire</h6>
-                    <div class="row container">
-                        
-                       <div class="col-lg-8">
-                        <div class="mb-3">
-                            <label for="exampleFormControlTextarea1" class="form-label container">Commentaire</label>
-                            <textarea class="form-control" [(ngModel)]='client.Commentaire'
-                            [ngModelOptions]="{standalone: true}" placeholder="Commentaire" id="exampleFormControlTextarea1" rows="3"></textarea>
-                          </div>
-                          <div class="mb-3">
-                            <label for="formFile" class="form-label container">Jointe1</label>
-                            <input class="form-control" type="file" id="formFile" [(ngModel)]='client.Jointe1'>
-                          </div>
-                          <div class="mb-3">
-                            <label for="formFile" class="form-label container">Jointe2</label>
-                            <input class="form-control" type="file" id="formFile" [(ngModel)]='client.Jointe2'>
-                          </div>
-                       </div>
-                    </div>
-                       
+                        <div class="row container">
+
+                            <div class="col-lg-8">
+                                <div class="mb-3">
+                                    <label for="exampleFormControlTextarea1"
+                                        class="form-label container">Commentaire</label>
+                                    <textarea class="form-control form-control-sm" [(ngModel)]='client.Commentaire'
+                                        [ngModelOptions]="{standalone: true}" placeholder="Commentaire"
+                                        id="exampleFormControlTextarea1" rows="3"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="formFile" class="form-label container">Jointe1</label>
+                                    <input class="form-control form-control-sm" type="file" id="formFile"
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]='client.Jointe1'>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="formFile" class="form-label container">Jointe2</label>
+                                    <input class="form-control form-control-sm" type="file" id="formFile"
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]='client.Jointe2'>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
             <div class="form-group text-center">
-                <button type="submit" class="btn btn-primary py-3 px-5">Modifier</button>
+                <button type="submit" class="btn btn-primary py-3 px-5">Valider</button>
             </div>
         </div>
     </form>

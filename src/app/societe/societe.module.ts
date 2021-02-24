@@ -6,16 +6,23 @@ import { ParamSocieteComponent } from './param-societe/param-societe.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DeviseComponent } from './devise/devise.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CollaborateurComponent, FilterPipe } from './collaborateur/collaborateur.component';
-import { ScrollSpyDirective } from '../directive/scroll-spy.directive';
+import { CollaborateurComponent} from './collaborateur/collaborateur.component';
 import { ParamTiersComponent } from './param-tiers/param-tiers.component';
 import { ModalitePaiementComponent } from './modalite-paiement/modalite-paiement.component';
+import { SharedModule } from '../shared/shared.module';
+import { ProcessingParamComponent } from './processing-param/processing-param.component';
 
 
 @NgModule({
-  declarations: [FilterPipe,ParamSocieteComponent, DeviseComponent, CollaborateurComponent,ScrollSpyDirective, ParamTiersComponent, ModalitePaiementComponent],
+  declarations: [
+    ParamSocieteComponent,
+     DeviseComponent,
+      CollaborateurComponent,
+       ParamTiersComponent,
+        ModalitePaiementComponent,
+        ProcessingParamComponent],
   imports: [
-    
+    SharedModule,
     CommonModule,
     SocieteRoutingModule,
     NgbModule,

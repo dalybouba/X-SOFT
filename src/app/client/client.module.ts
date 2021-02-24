@@ -6,6 +6,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UpdateComponent } from './update/update.component';
 import { CreatComponent } from './creat/creat.component';
 import { ClientRoutingModule } from './client-routing.module';
+import { ContactComponent } from './contact/contact.component';
+import { SharedModule } from '../shared/shared.module';
+
 
 @NgModule({
   declarations: [
@@ -13,9 +16,11 @@ import { ClientRoutingModule } from './client-routing.module';
     ClientListComponent,
     UpdateComponent,
     CreatComponent,
+    ContactComponent,
 
   ],
   imports: [
+    SharedModule,
     CommonModule,
     ClientRoutingModule,
     FormsModule,

@@ -23,13 +23,8 @@ export class ParamTiersComponent implements OnInit {
   }
 
 
-  searchableList: any;
+
   searchText: string = "";
-  searchTerm: string;
-  page = 1;
-  pageSize = 5;
-  collectionSize: number;
-  currentRate = 8
   categorieTarif: CategorieTarif[];
   creatcategorieTarif: any = false;
   creatfamilleTier: any = false;
@@ -47,11 +42,8 @@ export class ParamTiersComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.societeServices.findCategorieTarif().subscribe(
-      data => {
-        this.categorieTarif = data;
-      }
-    );
+   this.getCategorieTarif();
+this.getFamilleTier();
     this.ID = this.activatedRoute.snapshot.paramMap.get('ID');
     
     this.societeServices.findNumeroCategorieTarif(this.ID)
@@ -81,14 +73,22 @@ export class ParamTiersComponent implements OnInit {
       Exonere: [''],
 
     });
-    this.societeServices.findfamilleTier().subscribe(
-      data => {
-        this.familleTiers = data;
-      }
-    );
 
   }
-
+  getCategorieTarif(){
+    this.societeServices.findCategorieTarif().subscribe(
+      data => {
+        this.categorieTarif = data;
+      }
+    );
+  }
+getFamilleTier(){
+  this.societeServices.findfamilleTier().subscribe(
+    data => {
+      this.familleTiers = data;
+    }
+  );
+}
   creatCategorieTarif() {
     this.creatcategorieTarif = true;
     this.updateFamilleTier = false;
@@ -117,34 +117,34 @@ export class ParamTiersComponent implements OnInit {
   }
   validateEdit() {
     this.societeServices.updateCategorieTarif(this.categoriesTarif).subscribe(
-      (data) => {
-        console.log(data);
+      () => {
         this.router.navigate([`settings/company/param-tiers`]);
       }
     ); console.log(this.categoriesTarif);
   }
   validateEditfamilleTier() {
     this.societeServices.updatefamilleTier(this.famillesTiers).subscribe(
-      (data) => {
-        console.log(data);
-        this.router.navigate([`settings/company/param-tiers`]);
-      }
-    ); console.log(this.famillesTiers);
-  }
-  validateCreat(collaborateur: any) {
-    console.log(collaborateur)
-    this.societeServices.creatCategorieTarif(collaborateur).subscribe(
       () => {
         this.router.navigate([`settings/company/param-tiers`]);
       }
+    );
+  }
+  validateCreat(param: any) {
+    console.log(param)
+    this.societeServices.creatCategorieTarif(param).subscribe(
+      () => {
+        this.getCategorieTarif()
+        return this.creatcategorieTarif=false;
+      }
     )
-    console.log(collaborateur)
+    console.log(param)
   }
   validateCreatfamilleTier(familleTier: any) {
     console.log(familleTier)
     this.societeServices.creatfamilleTier(familleTier).subscribe(
       () => {
-        this.router.navigate([`settings/company/param-tiers`]);
+        this.getFamilleTier();
+      return  this.creatfamilleTier = false;
       }
     )
     console.log(familleTier)

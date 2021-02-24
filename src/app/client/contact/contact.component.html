@@ -1,0 +1,129 @@
+<div class="container">
+    <h3 [ngStyle]="{'color':'#2f4f4f'}">Liste des Contact </h3>
+    <br>
+    <p>
+        <button type="button" class="btn btn-primary custom-btn " (click)="collapse.toggle()" [attr.aria-expanded]="!isCollapsed"
+          aria-controls="collapseExample">
+          Liste des Contact
+        </button>
+    </p>
+    <div class="row">
+        <div class="form-group col-lg-4">
+            <input class="form-control ml-6" type="text" placeholder="Filtrer..." name="searchText" />
+        </div>
+    </div>
+    <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+        <div class="card">
+          <div class="card-body">
+    <div>
+        <table class="container table table-striped">
+            <thead style="background-color:#2f4f4f ;">
+                <tr style="color: white;">
+                    <th>Nom Prenom</th>
+                    <th>Fonction</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let contact of contact">
+                    <th scope="row"> {{contact.NomPrenom}}</th>
+                    <td>{{contact.Fonction}}</td>
+                    <td>
+                        <a class="btn btn-simple  button" (click)='edit(collaborateur.ID)'
+                            (click)="scrollTo('section2')"><i class="fa fa-edit"><svg xmlns="http://www.w3.org/2000/svg"
+                                    width="12" height="12" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                                    <path
+                                        d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+                                </svg></i></a>
+                        <a class="btn  button" (click)='deleteCollaborateur(collaborateur.ID)'><i
+                                class="bi bi-x-circle"></i><svg xmlns="http://www.w3.org/2000/svg" width="12"
+                                height="12" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                <path
+                                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                            </svg></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+</div>
+</div>
+<div class="container">
+    <br>
+    <h3 [ngStyle]="{'color':'#2f4f4f'}">Ajouter Contact</h3>
+    <br>
+    <form [formGroup]='contactForm'>
+        <div class="row container">
+            <div class="col-lg-4">
+                <label class="container">Nom et Prénom</label>
+                <div class="form-group">
+                    <input type="text" class="form-control" formControlName='NomPrenom'>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <label class="container">Fonction</label>
+                <div class="form-group">
+                    <input type="text" class="form-control" formControlName='Fonction'>
+                </div>
+            </div>
+
+            <div class="col-lg-8">
+                <label class="container">Adresse</label>
+                <div class="form-group">
+                    <input type="text" class="form-control" formControlName='Adresse'>
+                </div>
+            </div>
+        </div>
+        <div class="row container">
+
+            <div class="col-lg-2">
+                <label class="container">Code Postal</label>
+                <div class="form-group">
+                    <input type="text" class="form-control" formControlName='CodePostal'>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <label class="container">Ville</label>
+                <div class="form-group">
+                    <input type="text" class="form-control" formControlName='Ville'>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <label class="container">Portable</label>
+                <div class="form-group">
+                    <input type="text" class="form-control" formControlName='Portable'>
+                </div>
+
+            </div>
+        </div>
+        <div class="row container">
+
+            <div class="col-lg-2">
+                <label class="container">Téléphone</label>
+                <div class="form-group">
+                    <input type="text" class="form-control" formControlName='Telephone'>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <label class="container">Fax</label>
+                <div class="form-group">
+                    <input type="text" class="form-control" formControlName='Fax'>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <label class="container">E-mail</label>
+                <div class="form-group">
+                    <input type="text" class="form-control" formControlName='Email'>
+                </div>
+
+            </div>
+        </div>
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary py-3 px-5" (click)='createContact(contactForm.value)'>Ajouter
+            </button>
+        </div>
+    </form>
+</div>
